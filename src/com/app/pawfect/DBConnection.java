@@ -1,4 +1,5 @@
 package com.app.pawfect;
+
 import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -16,7 +17,7 @@ public class DBConnection {
     protected Statement state;
     protected static ResultSet result;
 
-    public static void connect () {
+    public static void connect() {
         try {
             Class.forName(DRIVER);
             con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
