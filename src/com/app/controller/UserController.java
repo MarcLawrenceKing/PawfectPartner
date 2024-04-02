@@ -131,7 +131,9 @@ public class UserController extends DBConnection implements UserRepository {
 
     public void updateAccount (Account account, int choice) {
         String query = "Update tblusers set type_name = ? where users_id = ?";
-
+        
+        PetsController pet = new PetsController();
+        
         try {
             connect();
             prep = con.prepareStatement(query);
@@ -140,6 +142,7 @@ public class UserController extends DBConnection implements UserRepository {
             switch (choice) {
                 case 1:
                     prep.setString(1, "ADOPTER");
+                    pet.displayAdoptAPet(account);
                     break;
                 case 2:
                     prep.setString(1, "PET OWNER");
