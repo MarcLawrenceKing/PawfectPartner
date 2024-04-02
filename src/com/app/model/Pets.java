@@ -1,4 +1,4 @@
-package model;
+package com.app.model;
 
 public class Pets {
     private int pet_id;
