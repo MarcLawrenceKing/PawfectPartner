@@ -125,6 +125,7 @@ public class UserController extends DBConnection implements UserRepository {
 
         System.out.print("Enter your choice => ");
         int choice = sc.nextInt();
+        System.out.println("");
 
         updateAccount(account, choice);
     }

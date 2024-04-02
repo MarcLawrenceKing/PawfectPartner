@@ -10,6 +10,22 @@ public class Account {
     private String type;
     private int type_id;
     
+    public Account(){
+        
+    }
+
+    public Account(int user_id, String username, String password, String fName, String lName, String mobile, String type, int type_id) {
+        this.user_id = user_id;
+        this.username = username;
+        this.password = password;
+        this.fName = fName;
+        this.lName = lName;
+        this.mobile = mobile;
+        this.type = type;
+        this.type_id = type_id;
+    }
+    
+    
     public int getUser_id() {
         return user_id;
     }

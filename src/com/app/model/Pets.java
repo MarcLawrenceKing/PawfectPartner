@@ -1,7 +1,9 @@
 package com.app.model;
 
 public class Pets {
+    //instance variable
     private int pet_id;
+    private String pet_type;
     private String pet_name;
     private int pet_age;   
     private String pet_breed;
@@ -9,7 +11,32 @@ public class Pets {
     private String pet_status;
     private int adopter_id;
     private int owner_id;
-    
+
+    public Pets(){ //default constructor
+        
+    }
+    //initialized constructor
+    public Pets(int pet_id, String pet_type, String pet_name, int pet_age, String pet_breed, String pet_prevState, String pet_status, int adopter_id, int owner_id) {
+        this.pet_id = pet_id;
+        this.pet_type = pet_type;
+        this.pet_name = pet_name;
+        this.pet_age = pet_age;
+        this.pet_breed = pet_breed;
+        this.pet_prevState = pet_prevState;
+        this.pet_status = pet_status;
+        this.adopter_id = adopter_id;
+        this.owner_id = owner_id;
+    }
+
+    //setters and getters
+    public String getPet_type() {
+        return pet_type;
+    }
+
+    public void setPet_type(String pet_type) {
+        this.pet_type = pet_type;
+    }
+        
     public String getPet_name() {
         return pet_name;
     }

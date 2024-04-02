@@ -27,31 +27,36 @@ public class PetsController extends DBConnection implements PetsRepository {
                     displayPets(pet_control);
                     continue;
                 case '2':
-                    adoptAPet(pet_control);
+                    adoptAPet(account);
                     continue;
                 case 'B':
                     return;
             }
-
+            System.out.println("");
         } while (true);
+        
     }
 
     public void displayPets(Pets pet) {
+        do {
         String query = "Select * from tblpets where adopter_id = ?";
         ArrayList<Pets> petList = new ArrayList<Pets>(); // Store pets adopter is adopting (pending and approved)
         int counter = 0; // Counter for number of pets
         try {
             connect();
-            state = con.createStatement();
-            result = state.executeQuery(query);
+            prep = con.prepareStatement(query);
+            prep.setInt(1, pet.getAdopter_id());
+            
+            result = prep.executeQuery();
             System.out.println();
             while (result.next()) {
 
                 pet.setPet_id(result.getInt("pet_id"));
                 pet.setPet_name(result.getString("pet_name"));
+                pet.setPet_age(result.getInt("pet_age"));
                 pet.setPet_breed(result.getString("pet_breed"));
                 pet.setPet_prevState(result.getString("pet_prevState"));
-                pet.setPrev_status(result.getString("pet_pet_status"));
+                pet.setPrev_status(result.getString("pet_status"));
                 pet.setAdopter_id(result.getInt("adopter_id"));
                 pet.setOwner_id(result.getInt("owner_id"));
                 petList.add(pet); // Add each pet to the list
@@ -61,7 +66,7 @@ public class PetsController extends DBConnection implements PetsRepository {
             int backNum;
             int choice;
 
-            do {
+           
 
                 for (int i = 0; i < counter; i++) {
                     System.out.println("[" + (i + 1) + "] " + petList.get(i).getPet_name());
@@ -102,29 +107,31 @@ public class PetsController extends DBConnection implements PetsRepository {
                     }
                 }
 
-            } while (true);
+            
 
         } catch (Exception e) {
             System.err.println(e);
         }
+        } while (true);
 
     }
 
-    public void adoptAPet(Pets pet) {
+    public void adoptAPet(Account account) {
+        
         ArrayList<Pets> petList = new ArrayList<Pets>();
         int choice;
 
         do {
-            System.out.println("** Show Pet Types **");
+            System.out.println("\n** Show Pet Types **");
             System.out.println("[1] Dogs\n[2] Cats\n[3] Birds\n[4] Fishes\n[5] Rodents\n[6] Back");
-            System.out.print("\nEnter your choice => ");
+            System.out.print("Enter your choice => ");
             choice = sc.nextInt();
 
             if (choice == 6) {
                 return;
             }
 
-            String query = "Select * from tblpets where pet_type = ? and adpter_id = NULL";
+            String query = "Select * from tblpets where pet_type = ? and adopter_id is NULL";
 
             try {
 
@@ -133,49 +140,51 @@ public class PetsController extends DBConnection implements PetsRepository {
 
                 switch (choice) {
                     case 1:
-                        prep.setString(1, "Dogs");
+                        prep.setString(1, "DOG");
                         break;
                     case 2:
-                        prep.setString(1, "Cats");
+                        prep.setString(1, "CAT");
                         break;
                     case 3:
-                        prep.setString(1, "Birds");
+                        prep.setString(1, "BIRD");
                         break;
                     case 4:
-                        prep.setString(1, "Fishes");
+                        prep.setString(1, "FISH");
                         break;
                     case 5:
-                        prep.setString(1, "Rodents");
+                        prep.setString(1, "RODENT");
                         break;
                 }
 
                 result = prep.executeQuery();
                 int counter = 1;
                 while (result.next()) {
-                    System.out.println(result.getInt("[" + counter++ + "] " + result.getString("pet_name")));
-                    pet.setPet_id(result.getInt("pet_id"));
-                    pet.setPet_name(result.getString("pet_name"));
-                    pet.setPet_breed(result.getString("pet_breed"));
-                    pet.setPet_prevState(result.getString("pet_prevState"));
-                    pet.setPrev_status(result.getString("pet_pet_status"));
-                    pet.setAdopter_id(result.getInt("adopter_id"));
-                    pet.setOwner_id(result.getInt("owner_id"));
+                    Pets pets = new Pets();
+                    System.out.println("[" + counter++ + "] " + result.getString("pet_name"));
+                    pets.setPet_id(result.getInt("pet_id"));
+                    pets.setPet_name(result.getString("pet_name"));
+                    pets.setPet_age(result.getInt("pet_age"));
+                    pets.setPet_breed(result.getString("pet_breed"));
+                    pets.setPet_prevState(result.getString("pet_prevstate"));
+                    pets.setPrev_status(result.getString("pet_status"));
+                    pets.setAdopter_id(result.getInt("adopter_id"));
+                    pets.setOwner_id(result.getInt("owner_id"));
 
-                    petList.add(pet);
+                    petList.add(pets);
                 }
 
-                int backNum = counter + 1;
+                int backNum = counter;
                 System.out.println("[" + backNum + "] Back");
-                System.out.println("Enter pet to view => ");
+                System.out.print("Enter pet to view => ");
                 int choice1 = sc.nextInt();
 
-                if (choice == backNum) {
+                if (choice1 == backNum) {
                     petList.clear();
                     continue;
                 }
 
                 Pets petToView = new Pets();
-                if (choice1 > 0 && choice1 >= counter) {
+                if (choice1 > 0 && choice1 <= counter) {
 
                     petToView = petList.get(choice1 - 1);
 
@@ -186,11 +195,12 @@ public class PetsController extends DBConnection implements PetsRepository {
                     System.out.println("Status: " + petToView.getPet_status());
                 }
 
-                System.out.println("Would you like to continue this adoption? [Y/N]: ");
+                System.out.print("Would you like to continue this adoption? [Y/N]: ");
                 char yOrN = sc.next().charAt(0);
 
                 if (Character.toLowerCase(yOrN) == 'y') {
-                    updatePetsAdopter1(petToView);
+                    updatePetsAdopter1(petToView, account); //for new adoption
+                   
                 }
 
             } catch (Exception e) {
@@ -206,13 +216,13 @@ public class PetsController extends DBConnection implements PetsRepository {
     }
 
     // Update
-    public void updatePetsAdopter(Pets pet) {
+    public void updatePetsAdopter(Pets pet) {// for pending adoption
         String query = "Update tblpets set pet_status = ?, adopter_id = NULL where pet_id = ?"; // to be updated...
 
         try {
             connect();
             prep = con.prepareStatement(query);
-            prep.setString(1, ""); // need palitan
+            prep.setString(1, "FOR ADOPTION"); // need palitan
             prep.setInt(2, pet.getPet_id());
             prep.executeUpdate();
 
@@ -222,14 +232,14 @@ public class PetsController extends DBConnection implements PetsRepository {
         }
     }
 
-    public void updatePetsAdopter1(Pets pet) {
-        String query = "Update tblpets set adopter_pet = ?, pet status = ? where pet_id = ?";
+    public void updatePetsAdopter1(Pets pet, Account account) { //for new adoption
+        String query = "Update tblpets set adopter_id = ?, pet_status = ? where pet_id = ?";
 
         try {
             connect();
             prep = con.prepareStatement(query);
-            prep.setString(1, "PENDING");
-            prep.setInt(2, pet.getAdopter_id());
+            prep.setInt(1, account.getUser_id());
+            prep.setString(2, "PENDING");           
             prep.setInt(3, pet.getPet_id());
             prep.executeUpdate();
             System.out.println("Pet status updated successfully!");
