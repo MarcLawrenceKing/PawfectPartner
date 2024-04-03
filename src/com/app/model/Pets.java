@@ -31,6 +31,15 @@ public class Pets {// wagpansininito
     }
 
     // setters and getters
+
+    public int getPet_id() {
+        return pet_id;
+    }
+
+    public void setPet_id(int pet_id) {
+        this.pet_id = pet_id;
+    }
+
     public String getPet_type() {
         return pet_type;
     }
@@ -45,30 +54,6 @@ public class Pets {// wagpansininito
 
     public void setPet_name(String pet_name) {
         this.pet_name = pet_name;
-    }
-
-    public int getAdopter_id() {
-        return adopter_id;
-    }
-
-    public void setAdopter_id(int adopter_id) {
-        this.adopter_id = adopter_id;
-    }
-
-    public int getOwner_id() {
-        return owner_id;
-    }
-
-    public void setOwner_id(int owner_id) {
-        this.owner_id = owner_id;
-    }
-
-    public int getPet_id() {
-        return pet_id;
-    }
-
-    public void setPet_id(int pet_id) {
-        this.pet_id = pet_id;
     }
 
     public int getPet_age() {
@@ -99,8 +84,25 @@ public class Pets {// wagpansininito
         return pet_status;
     }
 
-    public void setPrev_status(String pet_status) {
+    public void setPet_status(String pet_status) {
         this.pet_status = pet_status;
     }
+
+    public int getAdopter_id() {
+        return adopter_id;
+    }
+
+    public void setAdopter_id(int adopter_id) {
+        this.adopter_id = adopter_id;
+    }
+
+    public int getOwner_id() {
+        return owner_id;
+    }
+
+    public void setOwner_id(int owner_id) {
+        this.owner_id = owner_id;
+    }
+
 
 }
