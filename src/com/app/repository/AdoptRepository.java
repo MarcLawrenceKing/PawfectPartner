@@ -1,5 +1,5 @@
 package com.app.repository;
 
-public interface PetsRepository {
+public interface AdoptRepository {
 
 }
