@@ -19,10 +19,11 @@ public class RHPendingAdoptions {
         int choice;
         
         do {
+          try {
             System.out.println("** Pending Adoptions **");
             for (int i = 0; i < pets.size(); i++) {            
             System.out.println("[" + (i + 1) + "] " + pets.get(i).getPet_name());
-          }
+            }
 
             backNum = pets.size() + 1; // Number to assign to back option [backNum] Back
             System.out.println("[" + (backNum) + "] Back");
@@ -30,15 +31,23 @@ public class RHPendingAdoptions {
             choice = sc.nextInt();
 
             if (choice == backNum) {
-            return;
-}
+              return;
+            }
+            
             if (choice > 0 && choice >= pets.size()) {
-            Pets petToView = new Pets();
-            petToView = pets.get(choice - 1);
+              Pets petToView = new Pets();
+              petToView = pets.get(choice - 1);
             
-            app.rhPendingPetProfile(petToView, account);
+              app.rhPendingPetProfile(petToView, account);
+            }
             
-                }
+            sc.close();
+
+          } catch (Exception e) {
+            System.out.println(e);
+          }
+            
+          
         } while (true);    
 }
 }

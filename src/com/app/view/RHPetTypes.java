@@ -1,7 +1,6 @@
 
 package com.app.view;
 
-import com.app.controller.RehomeController;
 import com.app.model.Account;
 import com.app.model.Pets;
 import java.util.Scanner;
@@ -9,7 +8,6 @@ import java.util.Scanner;
 public class RHPetTypes {
     public void rhPetTypes(Account account, Pets pet){
         Scanner sc = new Scanner(System.in);
-        RehomeController rc = new RehomeController();
         RHPetProfile rp = new RHPetProfile();
         
             do {
@@ -20,10 +18,14 @@ public class RHPetTypes {
             choice = sc.nextInt();
 
             if (choice == 6) {
+                sc.close();
                 return;
             }
             
-            rp.rhPetProfile(account, pet, choice);
+            if (choice > 0 && choice < 6) {
+                rp.rhPetProfile(account, pet, choice);
+            }
+           
             
             
             

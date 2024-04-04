@@ -21,12 +21,13 @@ public class AdoptAPet {
             pet.setAdopter_id(account.getUser_id()); // Sets pet's adopter_id with users_id
             switch (choice) {
                 case '1':
-                    aa.adPendingAdoption(pet,account);
+                    aa.adPendingAdoption(pet,account);  //Calls method of class ADPendingAdoption
                     continue;
                 case '2':
-                    ap.adPetTypes(account);
+                    ap.adPetTypes(account); //Calls method of class ADPetTypes
                     continue;
                 case 'B':
+                    sc.close();
                     return;
             }
             System.out.println("");

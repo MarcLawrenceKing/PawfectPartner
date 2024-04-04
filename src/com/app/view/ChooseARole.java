@@ -11,13 +11,20 @@ public class ChooseARole {
         Scanner sc = new Scanner(System.in);
         UserController uc = new UserController();
         
-        System.out.println("** Choose a Role **");
-        System.out.println("[1] Adopt a pet\n[2] Rehome a pet");
+        try {
+            System.out.println("** Choose a Role **");
+            System.out.println("[1] Adopt a pet\n[2] Rehome a pet");
 
-        System.out.print("Enter your choice => ");
-        int choice = sc.nextInt();
+            System.out.print("Enter your choice => ");
+            int choice = sc.nextInt();
 
-        uc.updateAccount(account, choice);
+            uc.updateAccount(account, choice);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        sc.close();
+        
     
     }
 }

@@ -6,6 +6,11 @@ public interface QueryConstant {
                     + "values (?, ?, ?, ?, ?)";
     String LOGIN_ACCOUNT = "Select * from tblusers where users_username = ? and users_password = ?";
     String UPDATE_ACCOUNT = "Update tblusers set type_name = ? where users_id = ?";
+
+    String LOGIN_ACCOUNT_ADMIN = "Select * from tblusers where users_username = ? and users_password = ?";
+    String ADM_USERS_TABLE = "Select * from tblusers";
+    String ADM_PETS_TABLE = "Select * from tblpets";
+    String ADM_DELETE_PETS_ARCHIVED = "Delete from tblpets where pet_status = 'ARCHIVED'";
     
     String AD_PENDING_ADOPTIONS = "Select * from tblpets where adopter_id = ?";
     String AD_PET_TYPES = "Select * from tblpets where pet_type = ? and adopter_id is NULL";

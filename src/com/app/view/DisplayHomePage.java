@@ -1,7 +1,6 @@
 
 package com.app.view;
 
-import com.app.model.Account;
 import java.util.Scanner;
 
 

@@ -1,7 +1,6 @@
 package com.app.controller;
 
 
-import com.app.model.Account;
 import com.app.model.Pets;
 import static com.app.model.QueryConstant.RH_CREATE_PET_PROFILE;
 import static com.app.model.QueryConstant.RH_PENDING_ADOPTIONS;
@@ -16,6 +15,7 @@ import java.util.Scanner;
 public class RehomeController extends DBConnection implements RehomeRepository {
     Scanner sc = new Scanner(System.in);
     
+    @Override
     public ArrayList<Pets> rhPendingAdoptions(Pets pet) { //reads the database
       
         ArrayList<Pets> petList = new ArrayList<>(); // Store pets adopter is adopting (pending and approved)
@@ -45,6 +45,7 @@ public class RehomeController extends DBConnection implements RehomeRepository {
         return petList;        
     }
 
+    @Override
     public void RHUpdateToAPPROVED(Pets pet){
         try {
             connect();
@@ -58,7 +59,8 @@ public class RehomeController extends DBConnection implements RehomeRepository {
             System.err.println(e);
         }
     }
-            
+    
+    @Override
     public void RHUpdateToARCHIVED(Pets pet) {
 
         try {
@@ -75,6 +77,7 @@ public class RehomeController extends DBConnection implements RehomeRepository {
     }
 
 // Create
+    @Override
     public void rhPetProfiles(Pets pet) {    
         try {
             connect();

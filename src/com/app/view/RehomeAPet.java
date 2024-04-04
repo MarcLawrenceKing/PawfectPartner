@@ -29,6 +29,7 @@ public class RehomeAPet {
                     rt.rhPetTypes(account, pet);
                     continue;
                 case 'B':
+                sc.close();
                     return;
             }
             System.out.println("");
