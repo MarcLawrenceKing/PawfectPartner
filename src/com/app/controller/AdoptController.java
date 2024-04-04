@@ -109,7 +109,7 @@ public class AdoptController extends DBConnection implements AdoptRepository {
             System.err.println(e);
         }
     }
-
+    // Marc King POGI
     @Override
     public void ADUpdateToPENDING(Pets pet, Account account) { //for new adoption
         
