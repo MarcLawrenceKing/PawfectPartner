@@ -51,6 +51,8 @@ public class RHPendingPetProfile {
         } catch (Exception e) {
             System.out.println(e);
         }
+
+        sc.close();
         
         
                                     

@@ -34,17 +34,20 @@ public class ADPendingAdoptions {
                 return;
     }
                 if (choice > 0 && choice >= pets.size()) {
-                Pets petToView = new Pets();
-                petToView = pets.get(choice - 1);
+                    Pets petToView = new Pets();
+                    petToView = pets.get(choice - 1);
+                    
+                    app.adPendingPetProfile(petToView, account);
+                } 
                 
-                app.adPendingPetProfile(petToView, account);
-                
-                    }
+                    sc.close();;
+        
             } while (true);  
         } catch (Exception e) {
             System.err.println(e);
         }
-        
+
+       
         
     }
 }

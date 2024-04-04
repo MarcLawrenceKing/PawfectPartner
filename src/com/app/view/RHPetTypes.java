@@ -18,6 +18,7 @@ public class RHPetTypes {
             choice = sc.nextInt();
 
             if (choice == 6) {
+                sc.close();
                 return;
             }
             

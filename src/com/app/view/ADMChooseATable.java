@@ -19,8 +19,9 @@ public class ADMChooseATable {
         switch (choice) {
             case 1: admut.admUsersTable(account); act.chooseATable(account); break;
             case 2: admpt.admPetsTable(); admca.admPetsTableChooseAnAction(); act.chooseATable(account);break ;
-            case 3: return;
+            case 3: sc.close(); return;
 
         }
+        sc.close();
     }
 }

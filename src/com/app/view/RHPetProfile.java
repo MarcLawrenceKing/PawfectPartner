@@ -44,6 +44,7 @@ public class RHPetProfile {
             System.out.println("Would you like to continue this adoption? [Y/N]");
             char yOrN = sc.next().charAt(0);
             yOrN = Character.toLowerCase(yOrN);
+            sc.close();
             
             if (yOrN == 'y') {
             rc.rhPetProfiles(pet);

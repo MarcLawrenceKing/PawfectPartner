@@ -64,6 +64,7 @@ public class ADPetTypes {
                 System.err.println(e);
             }
             
+            sc.close();
         } while (true);
 
     }

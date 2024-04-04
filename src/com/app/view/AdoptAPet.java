@@ -27,6 +27,7 @@ public class AdoptAPet {
                     ap.adPetTypes(account); //Calls method of class ADPetTypes
                     continue;
                 case 'B':
+                    sc.close();
                     return;
             }
             System.out.println("");

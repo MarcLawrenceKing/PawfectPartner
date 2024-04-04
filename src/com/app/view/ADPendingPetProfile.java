@@ -37,6 +37,8 @@ public class ADPendingPetProfile {
         } catch (Exception e) {
             System.out.println(e);
         }
+
+        sc.close();
         
     }
 }

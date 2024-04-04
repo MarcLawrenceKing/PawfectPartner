@@ -17,5 +17,7 @@ public class ADMPetsTableChooseAnAction {
         switch (choice) {
             case 1: ac.ADMDeltePetsArchived(); break;
         }
+
+        sc.close();
     }
 }

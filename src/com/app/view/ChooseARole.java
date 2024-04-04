@@ -22,6 +22,8 @@ public class ChooseARole {
         } catch (Exception e) {
             System.out.println(e);
         }
+
+        sc.close();
         
     
     }

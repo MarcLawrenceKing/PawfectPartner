@@ -40,11 +40,14 @@ public class RHPendingAdoptions {
             
               app.rhPendingPetProfile(petToView, account);
             }
+            
+            sc.close();
 
           } catch (Exception e) {
             System.out.println(e);
           }
             
+          
         } while (true);    
 }
 }
