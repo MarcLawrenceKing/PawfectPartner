@@ -76,7 +76,7 @@ public class RehomeController extends DBConnection implements RehomeRepository {
         }
     }
 
-// Create
+// Create a Baby
     @Override
     public void rhPetProfiles(Pets pet) {    
         try {
