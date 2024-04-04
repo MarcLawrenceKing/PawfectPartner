@@ -18,28 +18,33 @@ public class ADPendingAdoptions {
         int backNum;
         int choice;
         
-        do {
-            System.out.println("** Pending Adoptions **");
-            for (int i = 0; i < pets.size(); i++) {            
-            System.out.println("[" + (i + 1) + "] " + pets.get(i).getPet_name());
-          }
+        try {
+            do {
+                System.out.println("** Pending Adoptions **");
+                for (int i = 0; i < pets.size(); i++) {            
+                System.out.println("[" + (i + 1) + "] " + pets.get(i).getPet_name());
+            }
 
-            backNum = pets.size() + 1; // Number to assign to back option [backNum] Back
-            System.out.println("[" + (backNum) + "] Back");
-            System.out.print("Enter your choice => ");
-            choice = sc.nextInt();
+                backNum = pets.size() + 1; // Number to assign to back option [backNum] Back
+                System.out.println("[" + (backNum) + "] Back");
+                System.out.print("Enter your choice => ");
+                choice = sc.nextInt();
 
-            if (choice == backNum) {
-            return;
-}
-            if (choice > 0 && choice >= pets.size()) {
-            Pets petToView = new Pets();
-            petToView = pets.get(choice - 1);
-            
-            app.adPendingPetProfile(petToView, account);
-            
-                }
-        } while (true);
+                if (choice == backNum) {
+                return;
+    }
+                if (choice > 0 && choice >= pets.size()) {
+                Pets petToView = new Pets();
+                petToView = pets.get(choice - 1);
+                
+                app.adPendingPetProfile(petToView, account);
+                
+                    }
+            } while (true);  
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+        
         
     }
 }

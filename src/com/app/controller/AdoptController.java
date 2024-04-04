@@ -14,6 +14,7 @@ import java.util.Scanner;
 public class AdoptController extends DBConnection implements AdoptRepository {
     Scanner sc = new Scanner(System.in);
 
+    @Override
     public ArrayList<Pets> adPendingAdoptions(Pets pet) { //reads the database
       
         ArrayList<Pets> petList = new ArrayList<>(); // Store pets adopter is adopting (pending and approved)
@@ -43,6 +44,7 @@ public class AdoptController extends DBConnection implements AdoptRepository {
         return petList;        
     }
 
+    @Override
     public ArrayList<Pets> adPetTypes(Account account, int choice) {
         
         ArrayList<Pets> petList = new ArrayList<>();
@@ -91,6 +93,7 @@ public class AdoptController extends DBConnection implements AdoptRepository {
             return petList;
     }
 
+    @Override
     public void ADUpdateToFOR_ADOPTION(Pets pet) {// for pending adoption
          // to be updated...
 
@@ -107,6 +110,7 @@ public class AdoptController extends DBConnection implements AdoptRepository {
         }
     }
 
+    @Override
     public void ADUpdateToPENDING(Pets pet, Account account) { //for new adoption
         
         try {

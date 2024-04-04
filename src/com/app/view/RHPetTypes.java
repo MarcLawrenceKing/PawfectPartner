@@ -23,7 +23,10 @@ public class RHPetTypes {
                 return;
             }
             
-            rp.rhPetProfile(account, pet, choice);
+            if (choice > 0 && choice < 6) {
+                rp.rhPetProfile(account, pet, choice);
+            }
+           
             
             
             

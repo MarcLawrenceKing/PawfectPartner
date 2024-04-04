@@ -1,0 +1,11 @@
+{
+    "java.project.referencedLibraries": {
+        "include": [
+            "lib/**/*.jar"
+        ],
+        "exclude": [
+            "lib/CopyLibs/org-netbeans-modules-java-j2seproject-copylibstask.jar",
+            "lib/MySQLDriver/mysql-connector-java-5.1.23-bin.jar"
+        ]
+    }
+}
