@@ -89,7 +89,7 @@ public class AdoptController extends DBConnection implements AdoptRepository {
                 System.err.println(e);
             }       
             return petList;
-    }
+    }    
 
     public void ADUpdateToFOR_ADOPTION(Pets pet) {// for pending adoption
          // to be updated...
@@ -106,9 +106,14 @@ public class AdoptController extends DBConnection implements AdoptRepository {
             System.err.println(e);
         }
     }
-
-    public void ADUpdateToPENDING(Pets pet, Account account) { //for new adoption
-        
+    
+    /**
+     * Updating the status of the pet's to "PENDING AD" to show its obtainable for adoption.
+     *
+     * @param pet The pet status whose needs to be reform.
+     * @param account The account that starts the lengthy procedure of adoption. Currently not utilize in this method.
+     */
+    public void ADUpdateToPENDING(Pets pet, Account account) { 
         try {
             connect();
             prep = con.prepareStatement(AD_UPDATE_TO_PENDING);
