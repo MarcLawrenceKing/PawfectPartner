@@ -1,5 +1,6 @@
 package com.app.controller;
 
+// importing necessary packages and classes
 import com.app.repository.AdoptRepository;
 import com.app.pawfect.DBConnection;
 import com.app.model.Account;
@@ -11,22 +12,24 @@ import static com.app.model.QueryConstant.AD_UPDATE_TO_PENDING;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+// in this class, it manages the adoption functionalities and interactions with the database
 public class AdoptController extends DBConnection implements AdoptRepository {
     Scanner sc = new Scanner(System.in);
 
+    // method that fetch pending adoption profiles from the database
     @Override
-    public ArrayList<Pets> adPendingAdoptions(Pets pet) { //reads the database
+    public ArrayList<Pets> adPendingAdoptions(Pets pet) { // reads the database
       
-        ArrayList<Pets> petList = new ArrayList<>(); // Store pets adopter is adopting (pending and approved)
+        ArrayList<Pets> petList = new ArrayList<>(); // store pets adopter is adopting (pending and approved)
         try {
-            connect();
-            prep = con.prepareStatement(AD_PENDING_ADOPTIONS);
-            prep.setInt(1, pet.getAdopter_id());
+            connect(); // establishing database connection
+            prep = con.prepareStatement(AD_PENDING_ADOPTIONS); // preparing SQL statement to retrieve pending adoption data
+            prep.setInt(1, pet.getAdopter_id()); // setting adopter ID parameter
             
-            result = prep.executeQuery();
+            result = prep.executeQuery(); // executing the query
             System.out.println();
             while (result.next()) {
-
+                //  extracting pet details from the result set
                 pet.setPet_id(result.getInt("pet_id"));
                 pet.setPet_name(result.getString("pet_name"));
                 pet.setPet_age(result.getInt("pet_age"));
@@ -35,15 +38,16 @@ public class AdoptController extends DBConnection implements AdoptRepository {
                 pet.setPet_status(result.getString("pet_status"));
                 pet.setAdopter_id(result.getInt("adopter_id"));
                 pet.setOwner_id(result.getInt("owner_id"));
-                petList.add(pet); // Add each pet to the list
+                petList.add(pet); // add each pet to the list
             }            
-            con.close();
-        } catch (Exception e) {
+            con.close(); // closing the database connection
+        } catch (Exception e) { // exception handling
             System.err.println(e);
         }
-        return petList;        
+        return petList; // returning the array list of pet details        
     }
 
+    // basta andito na kooo
     @Override
     public ArrayList<Pets> adPetTypes(Account account, int choice) {
         
