@@ -1,3 +1,11 @@
+/*
+    the LoginAccount class represents the interface that allows the users the view for logging in to an account
+    in this class, includes a validation process to check if the details of users are the same as the inputted attributes to the database
+
+    @author Alessa Estaras, Cassidy Fernandez, Randy Kapangyarihan, Marc King, Jhanna Llovit
+
+    @version 04/06/2024
+*/
 package com.app.view;
 
 import com.app.controller.AdminController;
