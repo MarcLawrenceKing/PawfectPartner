@@ -1,5 +1,5 @@
 /**
- * The RehomeController part of the code is where it can be seen if a Pet Owner will adopt his pets, 
+ * The RehomeController is where it can be seen if a Pet Owner will adopt his pets, 
  * because the Profiles of the specific pet he will adopt are placed here. 
  * It can also be seen here if the pet status is APPROVED or ARCHIVED. 
  * And the Owner can also update his pet's profile here.
