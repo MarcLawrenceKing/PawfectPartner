@@ -1,3 +1,12 @@
+/*
+    The ADPendingAdoptions class represents the display for managing pending adoptions.
+    It provides functionality to display pending adoptions and allows users to interact with the system.
+    This class is used to manage pending adoptions within the system.
+
+    @author Alessa Estaras, Cassidy Fernandez, Randy Kapangyarihan, Marc King, Jhanna Llovit
+ 
+    @version 04/06/2024
+*/
 package com.app.view;
 
 //importing the necessary packages and classes
