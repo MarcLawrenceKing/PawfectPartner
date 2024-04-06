@@ -1,3 +1,12 @@
+/*
+     The ADPetTypes class represents the display for managing pet types and adoptions.
+     It provides functionality to display available pet types and manage pet adoptions.
+     This class is used to manage pet types and adoptions within the system.
+
+     @author Alessa Estaras, Cassidy Fernandez, Randy Kapangyarihan, Marc King, Jhanna Llovit
+     
+     @version 04/06/2024
+*/
 package com.app.view;
 
 import com.app.controller.AdoptController;
