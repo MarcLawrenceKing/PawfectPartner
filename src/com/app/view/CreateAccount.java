@@ -1,4 +1,15 @@
-
+/**
+ * The CreateAccount class is represents the view for creating account.
+ * It dispense functionality to get user input for a creating a new account
+ * including basic info of the users
+ *
+ * This class by the user interface to accelerate pet adoptions functionality.
+ * It interconnect with UserController class for creating new account
+ *
+ * @author Alessa Estaras, Cassidy Fernandez, Kapangyarihan Randy, Marc King, Jhanna Llovit
+ *
+ * @version 04/06/2023
+ */
 package com.app.view;
 
 import com.app.controller.UserController;
@@ -7,6 +18,10 @@ import java.util.Scanner;
 
 
 public class CreateAccount {
+    /**
+     * Prompts the user to input information for creating new account
+     * and holds the account creation activity
+     */
     public void createAccount(){
         Account account = new Account();
         Scanner sc = new Scanner(System.in);
@@ -28,12 +43,16 @@ public class CreateAccount {
             char yOrN = sc.next().charAt(0);
             
             switch (Character.toLowerCase(yOrN)) {
-                case 'y': uc.createAccount(account); break;
-                case 'n': dh.displayHomePage(sc); break;
+                case 'y': 
+                    uc.createAccount(account); //Return to home page if user choose 'N'
+                    break; 
+                case 'n': 
+                    dh.displayHomePage(sc); //Return to home page if user choose 'N'
+                    break; 
                 default: 
                     System.out.println("Invalid Input!!");
-                    createAccount();
-                    break;
+                    createAccount(); //Prompt user again. 
+                    break; 
            }
         } catch (Exception e) {
             System.out.println(e);
