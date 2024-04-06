@@ -1,5 +1,15 @@
+/**
+ * The UserController part of the code is where you can see how users create an Account.
+ * how to Log-in and how to Update their accounts if they are an Adopter or Pet Owner
+ *
+ * @author Alessa Estaras, Cassidy Fernandez, Kapangyarihan Randy, Marc King, Jhanna Llovit
+ *
+ * @version 04/06/2023
+ */
+
 package com.app.controller;
 
+//Importing necessary classes and packages.
 import java.util.Scanner;
 
 import com.app.repository.UserRepository;
@@ -13,7 +23,16 @@ import com.app.view.ChooseARole;
 import com.app.view.DisplayHomePage;
 import com.app.view.RehomeAPet;
 
+/**
+ * The UserController implements the operations defined in UserRepository
+ * The UserController class extends to DBConnection to hold a database interconnection
+ */
 public class UserController extends DBConnection implements UserRepository {
+
+    /**
+     * Scanner method named in to get the input from the user
+     * to be used all throughout the program
+     */
     Scanner sc = new Scanner(System.in);
     DisplayHomePage dh = new DisplayHomePage();
 
