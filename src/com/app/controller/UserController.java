@@ -36,6 +36,10 @@ public class UserController extends DBConnection implements UserRepository {
     Scanner sc = new Scanner(System.in);
     DisplayHomePage dh = new DisplayHomePage();
 
+    /**
+     * Creating a new user account in Database
+     * @param account The object who contain account informations
+     */
     @Override
     public void createAccount(Account account) {
         try {
@@ -62,6 +66,10 @@ public class UserController extends DBConnection implements UserRepository {
         }
     }
 
+    /**
+     * Accesses a user account that already exists.
+     * @param account The object who contain login stuff
+     */
     @Override
     public void logInAccount(Account account) {
         ChooseARole cr = new ChooseARole();
@@ -91,6 +99,11 @@ public class UserController extends DBConnection implements UserRepository {
         }
     }
 
+    /**
+     * Updating the user account's role.
+     * @param account The object that has to have its role changed.
+     * @param choice  An integer representing the user's choice.
+     */
     @Override
     public void updateAccount(Account account, int choice) {
         AdoptAPet ap = new AdoptAPet();
