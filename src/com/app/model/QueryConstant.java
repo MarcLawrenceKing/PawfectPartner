@@ -1,6 +1,17 @@
+/*
+    the query constant interface contains all the query constants used in the database
+    it provides a centralized location to store SQL queries used throughout
+    this interface groups related queries together for better organization and maintenance
+
+    This interface should be implemented by classes that need to use these query constants.
+
+    @author Alessa Estaras, Cassidy Fernandez, Randy Kapangyarihan, Marc King, Jhanna Llovit
+  
+    @version 04/06/2024
+*/
 package com.app.model;
 /*
-    an interface that contains all the query constancts used in the database operations
+    an interface that contains all the query constants used in the database operations
 */
 
 public interface QueryConstant {
@@ -8,7 +19,7 @@ public interface QueryConstant {
     // SQL query to create a new user account
     String CREATE_ACCOUNT = "Insert into tblusers(users_username, users_password, users_fName, users_lName, users_mobile) " 
                     + "values (?, ?, ?, ?, ?)";
-    // SQL query to log in to an existing user account, it checks if the details of the users are present in the database 
+    // SQL query to log in to an existing user account, checks if the details of the users are present in the database 
     String LOGIN_ACCOUNT = "Select * from tblusers where users_username = ? and users_password = ?";
     // SQL query to update user's account type
     String UPDATE_ACCOUNT = "Update tblusers set type_name = ? where users_id = ?";
