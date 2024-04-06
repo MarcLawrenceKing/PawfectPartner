@@ -14,7 +14,7 @@ import java.util.Scanner;
 
 /**
  * The RehomeController class implements the operations defined in the RehomeRepository
- * The Rehome Controller class extends to DBConnection to hold a database interconnection
+ * The RehomeController class extends to DBConnection to hold a database interconnection
  */
 public class RehomeController extends DBConnection implements RehomeRepository {
     
