@@ -20,7 +20,7 @@ public class RehomeController extends DBConnection implements RehomeRepository {
     
     /**
      * Scanner method named in to get the input from the user
-	 * to be used all throughout the program
+     * to be used all throughout the program
      */
     Scanner sc = new Scanner(System.in); 
     
