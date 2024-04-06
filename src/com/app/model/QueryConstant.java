@@ -1,19 +1,17 @@
-/*
-    the query constant interface contains all the query constants used in the database
-    it provides a centralized location to store SQL queries used throughout
-    this interface groups related queries together for better organization and maintenance
-
-    This interface should be implemented by classes that need to use these query constants.
-
-    @author Alessa Estaras, Cassidy Fernandez, Randy Kapangyarihan, Marc King, Jhanna Llovit
-  
-    @version 04/06/2024
-*/
+/**
+ * The query constant interface contains all the query constants used in the database,
+ * it provides a centralized location to store SQL queries used throughout,
+ * this interface groups related queries together for better organization and maintenance
+ *
+ * This interface should be implemented by classes that need to use these query constants.
+ *
+ * @author Alessa Estaras, Cassidy Fernandez, Randy Kapangyarihan, Marc King, Jhanna Llovit
+ *   
+ * @version 04/06/2024
+ */
 package com.app.model;
-/*
-    an interface that contains all the query constants used in the database operations
-*/
 
+//An interface that contains all the query constants used in the database operations
 public interface QueryConstant {
 
     // SQL query to create a new user account
