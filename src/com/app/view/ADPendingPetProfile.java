@@ -1,3 +1,13 @@
+/*
+    The ADPendingPetProfile class represents the view for displaying pending pet profiles.
+    this is where the system displays the profile of a pending pet and allows the user to cancel the adoption.
+ 
+    This class is used to display pending pet profiles and pet status within the system
+
+    @author Alessa Estaras, Cassidy Fernandez, Randy Kapangyarihan, Marc King, Jhanna Llovit
+    
+    @version 04/06/2024
+*/
 package com.app.view;
 
 import com.app.controller.AdoptController;
