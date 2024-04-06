@@ -1,7 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * The RHPetProfile class is represents the view for inputting profiles of a pet
+ * It stores functionality to get from the user input to create or update a pet profile
+ *
+ * This class by the user interface to accelerate the creation or updating of a pet profile
+ * It interconnect with RehomeController class to hold the logic for creating or updating
+ *
+ * @author Alessa Estaras, Cassidy Fernandez, Kapangyarihan Randy, Marc King, Jhanna Llovit
+ *
+ * @version 04/07/2023
  */
 package com.app.view;
 
@@ -10,13 +16,21 @@ import com.app.model.Account;
 import com.app.model.Pets;
 import java.util.Scanner;
 
-/**
- *
- * @author marcl
- */
 public class RHPetProfile {
+
+    /**
+     * Prompts the user to input pet profiles and holds the adoption activity.
+     *
+     * @param account The object represents the user account
+     * @param pet The object represents the pet
+     * @param choice The object represents the decision of the user to selected pet type
+     */
     public void rhPetProfile(Account account, Pets pet, int choice){
-                
+
+        /*
+	     Scanner method named in to get the input from the user
+	     to be used all throughout the program
+	    */
         Scanner sc = new Scanner(System.in);
         RehomeController rc = new RehomeController();
         RHPetTypes rt = new RHPetTypes();
@@ -45,13 +59,14 @@ public class RHPetProfile {
             char yOrN = sc.next().charAt(0);
             yOrN = Character.toLowerCase(yOrN);
             sc.close();
-            
-            if (yOrN == 'y') {
-            rc.rhPetProfiles(pet);
-            rt.rhPetTypes(account, pet);
+
+            //Process adoption based on the choice of the users
+            if (yOrN == 'y') { 
+            rc.rhPetProfiles(pet); //Create or update pet profile
+            rt.rhPetTypes(account, pet); //Return to select another pet type
             } 
             if (yOrN == 'n') {
-                rt.rhPetTypes(account, pet);
+                rt.rhPetTypes(account, pet); //Return to select another pet type
             } 
         } catch (Exception e) {
             System.out.println(e);
