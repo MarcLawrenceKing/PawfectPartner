@@ -11,6 +11,7 @@
  */
 package com.app.model;
 
+//Instance Variable
 public class Account {
     private int user_id;
     private String username;
