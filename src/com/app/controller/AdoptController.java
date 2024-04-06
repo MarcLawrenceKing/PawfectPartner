@@ -1,3 +1,12 @@
+/*
+    The AdoptController class manages the adoption processes and interactions with the database
+    it implements the AdoptRepository interface and provides methods to perform various operations
+    this class is responsible for handling database queries
+    
+    @author Alessa Estaras, Cassidy Fernandez, Randy Kapangyarihan, Marc King, Jhanna Llovit
+
+    @version 04/06/2024
+*/
 package com.app.controller;
 
 // importing necessary packages and classes
