@@ -16,7 +16,7 @@ import java.util.Scanner;
 public class AdoptController extends DBConnection implements AdoptRepository {
     Scanner sc = new Scanner(System.in);
 
-    // method that fetch pending adoption profiles from the database
+    // method that fetches pending adoption profiles from the database
     @Override
     public ArrayList<Pets> adPendingAdoptions(Pets pet) { // reads the database
       
@@ -47,16 +47,17 @@ public class AdoptController extends DBConnection implements AdoptRepository {
         return petList; // returning the array list of pet details        
     }
 
-    // basta andito na kooo
+    // method that retrieves pet details of a specific type from the database
     @Override
     public ArrayList<Pets> adPetTypes(Account account, int choice) {
         
-        ArrayList<Pets> petList = new ArrayList<>();
+        ArrayList<Pets> petList = new ArrayList<>(); // list to store pets of  specific type
 
             try {
-                connect();
-                prep = con.prepareStatement(AD_PET_TYPES);
+                connect(); // establishing database connection 
+                prep = con.prepareStatement(AD_PET_TYPES); // preparing SQL statement to retrieve pet details
 
+                // setting the type of pet based on user's choice
                 switch (choice) {
                     case 1:
                         prep.setString(1, "DOG");
@@ -75,11 +76,12 @@ public class AdoptController extends DBConnection implements AdoptRepository {
                         break;
                 }
 
-                result = prep.executeQuery();
+                result = prep.executeQuery(); // executing the query
                 int counter = 1;
                 while (result.next()) {
-                    Pets pets = new Pets();
+                    Pets pets = new Pets(); // creating new pet object for each entry in the result set
                     System.out.println("[" + counter++ + "] " + result.getString("pet_name"));
+                    // extracting pet data and setting them to the pet object
                     pets.setPet_id(result.getInt("pet_id"));
                     pets.setPet_name(result.getString("pet_name"));
                     pets.setPet_age(result.getInt("pet_age"));
@@ -89,45 +91,47 @@ public class AdoptController extends DBConnection implements AdoptRepository {
                     pets.setAdopter_id(result.getInt("adopter_id"));
                     pets.setOwner_id(result.getInt("owner_id"));
 
-                    petList.add(pets);
+                    petList.add(pets); // adding the pet object to the list
                 }                                                
             } catch (Exception e) {
-                System.err.println(e);
+                System.err.println(e); // handling any exceptions that might occur
             }       
-            return petList;
+            return petList; // returning the list of pets of the specified type
     }
 
+    // method to update pet status to "For Adoption" for pending adoptions 
     @Override
     public void ADUpdateToFOR_ADOPTION(Pets pet) {// for pending adoption
          // to be updated...
 
         try {
-            connect();
-            prep = con.prepareStatement(AD_UPDATE_TO_FOR_ADOPTION);
-            prep.setString(1, "FOR ADOPTION"); // need palitan
-            prep.setInt(2, pet.getPet_id());
-            prep.executeUpdate();
+            connect(); // establishing database connection
+            prep = con.prepareStatement(AD_UPDATE_TO_FOR_ADOPTION); // preparing SQL statement to update pet status
+            prep.setString(1, "FOR ADOPTION"); // setting new status
+            prep.setInt(2, pet.getPet_id()); // setting the pet ID parameter
+            prep.executeUpdate(); // executing the update query
 
-            System.out.println("Pet status updated successfully!");
+            System.out.println("Pet status updated successfully!"); // displaying success message
         } catch (Exception e) {
-            System.err.println(e);
+            System.err.println(e); // handling any exceptions that might occur
         }
     }
 
+    // method to update pet status to "Pending AD" for new adoptions
     @Override
     public void ADUpdateToPENDING(Pets pet, Account account) { //for new adoption
         
         try {
-            connect();
-            prep = con.prepareStatement(AD_UPDATE_TO_PENDING);
-            prep.setInt(1, account.getUser_id());
-            prep.setString(2, "PENDING AD");           
-            prep.setInt(3, pet.getPet_id());
-            prep.executeUpdate();
-            System.out.println("Pet status updated successfully!");
+            connect(); // estabilshing database connection
+            prep = con.prepareStatement(AD_UPDATE_TO_PENDING); // preparing SQL statement to update pet status
+            prep.setInt(1, account.getUser_id()); // setting the adopter ID parameter
+            prep.setString(2, "PENDING AD"); // setting the new status           
+            prep.setInt(3, pet.getPet_id()); // setting the pet ID parameter
+            prep.executeUpdate(); // executing the update query
+            System.out.println("Pet status updated successfully!"); // displaying success message
 
         } catch (Exception e) {
-            System.err.println(e);
+            System.err.println(e); // handling any exceptions that might occur
         }
     }
 
