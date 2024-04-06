@@ -1,3 +1,11 @@
+/*
+    the DisplayHomePage represents the interface for displaying the starting page of the system
+    in this page, you can see the create account or login account option for users
+
+    @author Alessa Estaras, Cassidy Fernandez, Randy Kapangyarihan, Marc King, Jhanna Llovit
+
+    @version 04/06/2024
+*/
 package com.app.view;
 
 import java.util.Scanner;
