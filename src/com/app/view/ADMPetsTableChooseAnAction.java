@@ -1,9 +1,20 @@
+/**
+ * The ADMPetsTableChoose class provides selection for actions to be executed.
+ * It allows users to select wheter to retrieve, delete or go back to the main table 
+ *
+ * This class impart methods to showing the options menu, take user input and execute chosen selection
+ *
+ * @author Alessa Estaras, Cassidy Fernandez, Kapangyarihan Randy, Marc King, Jhanna Llovit
+ *
+ * @version 04/08/2023
+ */
 package com.app.view;
 
 import java.util.Scanner;
 
-
 public class ADMPetsTableChooseAnAction {
+
+    // Showing the options menu for actions on the pets table, take user inpit, and execute chosen selection.
     public void admPetsTableChooseAnAction () {
         ADMChooseATable act = new ADMChooseATable();
         Scanner sc = new Scanner(System.in);
