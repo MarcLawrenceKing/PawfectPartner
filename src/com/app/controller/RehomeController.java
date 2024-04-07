@@ -6,6 +6,7 @@ import static com.app.model.QueryConstant.RH_CREATE_PET_PROFILE;
 import static com.app.model.QueryConstant.RH_PENDING_ADOPTIONS;
 import static com.app.model.QueryConstant.RH_UPDATE_TO_APPROVED;
 import static com.app.model.QueryConstant.RH_UPDATE_TO_ARCHIVED;
+import static com.app.model.QueryConstant.RH_UPDATE_TO_NOT_APPROVED;
 import com.app.pawfect.DBConnection;
 import com.app.repository.RehomeRepository;
 import java.sql.PreparedStatement;
@@ -27,16 +28,16 @@ public class RehomeController extends DBConnection implements RehomeRepository {
             result = prep.executeQuery();
             System.out.println();
             while (result.next()) {
-
-                pet.setPet_id(result.getInt("pet_id"));
-                pet.setPet_name(result.getString("pet_name"));
-                pet.setPet_age(result.getInt("pet_age"));
-                pet.setPet_breed(result.getString("pet_breed"));
-                pet.setPet_prevState(result.getString("pet_prevstate"));
-                pet.setPet_status(result.getString("pet_status"));
-                pet.setAdopter_id(result.getInt("adopter_id"));
-                pet.setOwner_id(result.getInt("owner_id"));
-                petList.add(pet); // Add each pet to the list
+                Pets newPet = new Pets();
+                newPet.setPet_id(result.getInt("pet_id"));
+                newPet.setPet_name(result.getString("pet_name"));
+                newPet.setPet_age(result.getInt("pet_age"));
+                newPet.setPet_breed(result.getString("pet_breed"));
+                newPet.setPet_prevState(result.getString("pet_prevstate"));
+                newPet.setPet_status(result.getString("pet_status"));
+                newPet.setAdopter_id(result.getInt("adopter_id"));
+                newPet.setOwner_id(result.getInt("owner_id"));
+                petList.add(newPet); // Add each pet to the list
             }            
             con.close();
         } catch (Exception e) {
@@ -54,7 +55,22 @@ public class RehomeController extends DBConnection implements RehomeRepository {
             prep.setInt(2, pet.getPet_id());
             prep.executeUpdate();
 
-            System.out.println("Pet status updated successfully!");
+            System.out.println("\nPet status updated successfully!");
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+    }
+    
+    @Override
+    public void RHUpdateToNOTAPPROVED(Pets pet){
+        try {
+            connect();
+            prep = con.prepareStatement(RH_UPDATE_TO_NOT_APPROVED);
+            prep.setString(1, "NOT APPROVED"); 
+            prep.setInt(2, pet.getPet_id());
+            prep.executeUpdate();
+
+            System.out.println("\nPet status updated successfully!\nNOTE: You have to create a new pet profile if you wish to put the same pet again FOR ADOPTION.");
         } catch (Exception e) {
             System.err.println(e);
         }
@@ -70,7 +86,7 @@ public class RehomeController extends DBConnection implements RehomeRepository {
             prep.setInt(2, pet.getPet_id());
             prep.executeUpdate();
 
-            System.out.println("Pet status updated successfully!");
+            System.out.println("\nPet status updated successfully!");
         } catch (Exception e) {
             System.err.println(e);
         }
@@ -92,9 +108,9 @@ public class RehomeController extends DBConnection implements RehomeRepository {
             
             int rowsInserted = statement.executeUpdate();
             if (rowsInserted > 0) { //exception handling
-                System.out.println("Pet added successfully!");
+                System.out.println("\nPet added successfully!");
             } else {
-                System.out.println("Failed to add pet.");
+                System.out.println("\nFailed to add pet.");
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -102,25 +118,4 @@ public class RehomeController extends DBConnection implements RehomeRepository {
     }
 
 
-//    // Delete
-//    public void deletePet(Pets pet) {
-//        String query = "DELETE FROM tblpets WHERE pet_id = ?";
-//        try {
-//            connect();
-//            PreparedStatement statement = con.prepareStatement(query);
-//            statement.setInt(1, pet.getPet_id());
-//            statement.executeUpdate();
-//            System.out.println("Pet deleted successfully!");
-//        } catch (Exception e) {
-//            System.err.println(e);
-//        } finally {
-//            try {
-//                if (con != null) {
-//                    con.close();
-//                }
-//            } catch (Exception e) {
-//                System.err.println(e);
-//            }
-//        }
-//    }
 }

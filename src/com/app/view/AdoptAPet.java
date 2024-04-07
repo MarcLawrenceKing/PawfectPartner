@@ -11,12 +11,14 @@ public class AdoptAPet {
         Scanner sc = new Scanner(System.in);
         ADPendingAdoptions aa = new ADPendingAdoptions();
         ADPetTypes ap = new ADPetTypes();
+        ChooseARole cr = new ChooseARole();
 
         do {
             System.out.println("\n** Adopt a pet **");
             System.out.println("[1] Show your pending adoptions\n[2] Show pet types\n[B] Back");
             System.out.print("Enter your choice => ");
             choice = sc.nextLine().charAt(0);
+            choice = Character.toUpperCase(choice);
             Pets pet = new Pets();
             pet.setAdopter_id(account.getUser_id()); // Sets pet's adopter_id with users_id
             switch (choice) {
@@ -27,8 +29,12 @@ public class AdoptAPet {
                     ap.adPetTypes(account); //Calls method of class ADPetTypes
                     continue;
                 case 'B':
-                    sc.close();
-                    return;
+                    cr.chooseARole(account);
+                default: 
+                    System.out.println("");
+                    System.out.println("Invalid Input");
+                    adoptAPet(account);
+                    
             }
             System.out.println("");
         } while (true);

@@ -22,20 +22,20 @@ public class AdoptController extends DBConnection implements AdoptRepository {
             connect();
             prep = con.prepareStatement(AD_PENDING_ADOPTIONS);
             prep.setInt(1, pet.getAdopter_id());
-            
+                        
             result = prep.executeQuery();
             System.out.println();
             while (result.next()) {
-
-                pet.setPet_id(result.getInt("pet_id"));
-                pet.setPet_name(result.getString("pet_name"));
-                pet.setPet_age(result.getInt("pet_age"));
-                pet.setPet_breed(result.getString("pet_breed"));
-                pet.setPet_prevState(result.getString("pet_prevstate"));
-                pet.setPet_status(result.getString("pet_status"));
-                pet.setAdopter_id(result.getInt("adopter_id"));
-                pet.setOwner_id(result.getInt("owner_id"));
-                petList.add(pet); // Add each pet to the list
+                Pets newPet = new Pets();
+                newPet.setPet_id(result.getInt("pet_id"));
+                newPet.setPet_name(result.getString("pet_name"));
+                newPet.setPet_age(result.getInt("pet_age"));
+                newPet.setPet_breed(result.getString("pet_breed"));
+                newPet.setPet_prevState(result.getString("pet_prevstate"));
+                newPet.setPet_status(result.getString("pet_status"));
+                newPet.setAdopter_id(result.getInt("adopter_id"));
+                newPet.setOwner_id(result.getInt("owner_id"));
+                petList.add(newPet); // Add each pet to the list
             }            
             con.close();
         } catch (Exception e) {
@@ -48,7 +48,7 @@ public class AdoptController extends DBConnection implements AdoptRepository {
     public ArrayList<Pets> adPetTypes(Account account, int choice) {
         
         ArrayList<Pets> petList = new ArrayList<>();
-
+        
             try {
                 connect();
                 prep = con.prepareStatement(AD_PET_TYPES);
@@ -70,7 +70,8 @@ public class AdoptController extends DBConnection implements AdoptRepository {
                         prep.setString(1, "RODENT");
                         break;
                 }
-
+                
+               prep.setInt(2, account.getUser_id());
                 result = prep.executeQuery();
                 int counter = 1;
                 while (result.next()) {
@@ -100,7 +101,7 @@ public class AdoptController extends DBConnection implements AdoptRepository {
         try {
             connect();
             prep = con.prepareStatement(AD_UPDATE_TO_FOR_ADOPTION);
-            prep.setString(1, "FOR ADOPTION"); // need palitan
+            prep.setString(1, "FOR ADOPTION"); 
             prep.setInt(2, pet.getPet_id());
             prep.executeUpdate();
 
@@ -117,7 +118,7 @@ public class AdoptController extends DBConnection implements AdoptRepository {
             connect();
             prep = con.prepareStatement(AD_UPDATE_TO_PENDING);
             prep.setInt(1, account.getUser_id());
-            prep.setString(2, "PENDING AD");           
+            prep.setString(2, "PENDING");           
             prep.setInt(3, pet.getPet_id());
             prep.executeUpdate();
             System.out.println("Pet status updated successfully!");

@@ -7,8 +7,7 @@ public class Account {
     private String fName;
     private String lName;
     private String mobile;
-    private String type;
-    private int type_id;
+
     
     public Account(){
         
@@ -21,8 +20,6 @@ public class Account {
         this.fName = fName;
         this.lName = lName;
         this.mobile = mobile;
-        this.type = type;
-        this.type_id = type_id;
     }
     
     
@@ -50,13 +47,6 @@ public class Account {
         return mobile;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public int getType_id() {
-        return type_id;
-    }
     
     public void setUser_id(int user_id) {
         this.user_id = user_id;
@@ -82,8 +72,5 @@ public class Account {
         this.mobile = mobile;
     }
     
-    public void setType(String type){
-        this.type = type;
-    }
    
 }

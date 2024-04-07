@@ -22,19 +22,23 @@ public class RHPendingPetProfile {
         RehomeAPet rp = new RehomeAPet();
 
         try {
+            System.out.println("\n** Pending Pet Profile **");
             System.out.println("Name: " + petToView.getPet_name());
             System.out.println("Age: " + petToView.getPet_age());
             System.out.println("Pet breed: " + petToView.getPet_breed());
             System.out.println("Previous Status: " + petToView.getPet_prevState());
             System.out.println("Status: " + petToView.getPet_status());
 
-            if (petToView.getPet_status().equals("PENDING RH")) { 
+            if (petToView.getPet_status().equals("PENDING")) { 
                 System.out.print("Would you like to approve this adoption? [Y/N]: ");
                 char yOrN = sc.next().charAt(0);
         
                 if (Character.toLowerCase(yOrN) == 'y') {
-                rc.RHUpdateToAPPROVED(petToView);            
-              }            
+                    rc.RHUpdateToAPPROVED(petToView);            
+              }
+                if (Character.toLowerCase(yOrN) == 'n') {
+                    rc.RHUpdateToNOTAPPROVED(petToView);
+                }
             }
 
             if (petToView.getPet_status().equals("FOR ADOPTION")) { 
@@ -53,9 +57,7 @@ public class RHPendingPetProfile {
         }
 
         sc.close();
-        
-        
-                                    
+                                                    
 }
 
 }

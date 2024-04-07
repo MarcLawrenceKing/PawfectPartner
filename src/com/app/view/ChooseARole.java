@@ -12,8 +12,8 @@ public class ChooseARole {
         UserController uc = new UserController();
         
         try {
-            System.out.println("** Choose a Role **");
-            System.out.println("[1] Adopt a pet\n[2] Rehome a pet");
+            System.out.println("\n** Choose a Role **");
+            System.out.println("[1] Adopt a pet\n[2] Rehome a pet\n[3] Log out");
 
             System.out.print("Enter your choice => ");
             int choice = sc.nextInt();

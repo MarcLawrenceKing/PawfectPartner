@@ -14,18 +14,20 @@ import java.util.Scanner;
 public class ADPendingPetProfile {
     public void adPendingPetProfile(Pets petToView, Account account){
         
+        ADPendingAdoptions apa = new ADPendingAdoptions();
         Scanner sc = new Scanner(System.in);
         AdoptController ac = new AdoptController();
         AdoptAPet ap = new AdoptAPet();
         
         try {
+            System.out.println("\n** Pending Pet Profile **");
             System.out.println("Name: " + petToView.getPet_name());
             System.out.println("Age: " + petToView.getPet_age());
             System.out.println("Pet breed: " + petToView.getPet_breed());
             System.out.println("Previous Status: " + petToView.getPet_prevState());
             System.out.println("Status: " + petToView.getPet_status());
 
-            if (petToView.getPet_status().equals("PENDING AD")) { 
+            if (petToView.getPet_status().equals("PENDING")) { 
                 System.out.print("Would you like to cancel this adoption? [Y/N]: ");
                 char yOrN = sc.next().charAt(0);
         
@@ -33,6 +35,10 @@ public class ADPendingPetProfile {
                     ac.ADUpdateToFOR_ADOPTION(petToView);
                     ap.adoptAPet(account);
                 } 
+                
+                if (Character.toLowerCase(yOrN) == 'n') {
+                    apa.adPendingAdoption(petToView, account);
+                }
             }
         } catch (Exception e) {
             System.out.println(e);

@@ -15,6 +15,7 @@ public class LoginAccount {
         DisplayHomePage dhp = new DisplayHomePage();
         AdminController adc = new AdminController();
         
+        System.out.println("\n** Login Account **");
         System.out.print("Enter username: ");
         account.setUsername(sc.nextLine());
         System.out.print("Enter password: ");
@@ -22,7 +23,7 @@ public class LoginAccount {
         
         if (account.getUsername().equals("admin")) {
             adc.logInAccountAdmin(account);
-            dhp.displayHomePage(sc);
+            dhp.displayHomePage();
         }
 
         else {

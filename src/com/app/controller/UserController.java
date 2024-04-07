@@ -33,11 +33,10 @@ public class UserController extends DBConnection implements UserRepository {
                 System.out.println("Fields cannot be empty.");
             } else {
                 prep.executeUpdate();
-                System.out.println("Account Created Successfully!");
-                System.out.println("");
+                System.out.println("\nAccount Created Successfully!");
             }
             con.close();
-            dh.displayHomePage(sc);
+            dh.displayHomePage();
         } catch (Exception e) {
             System.err.println(e);
         }
@@ -45,6 +44,7 @@ public class UserController extends DBConnection implements UserRepository {
 
     @Override
     public void logInAccount(Account account) {
+        DisplayHomePage dhp = new DisplayHomePage();
         ChooseARole cr = new ChooseARole();
         try {
             connect();
@@ -62,10 +62,11 @@ public class UserController extends DBConnection implements UserRepository {
                 account.setPassword(result.getString("users_password"));
                 System.out.println("");
                 System.out.println("Logged in successfully!");
-                System.out.println("");
                 cr.chooseARole(account);
             } else {
+                System.out.println("");
                 System.out.println("Logged in failed.");
+                dhp.displayHomePage();
             }
         } catch (Exception e) {
             System.err.println(e);
@@ -76,6 +77,8 @@ public class UserController extends DBConnection implements UserRepository {
     public void updateAccount(Account account, int choice) {
         AdoptAPet ap = new AdoptAPet();
         RehomeAPet rp = new RehomeAPet();
+        DisplayHomePage dhp = new DisplayHomePage();
+        ChooseARole cr = new ChooseARole();
 
         try {
             connect();
@@ -89,11 +92,13 @@ public class UserController extends DBConnection implements UserRepository {
                 case 2:
                     prep.setString(1, "PET OWNER");
                     rp.rehomeAPet(account);
-
-                    break;
+                case 3: 
+                    System.out.println("\nLogged Out Successfuly!");
+                    dhp.displayHomePage();
                 default:
-                    System.out.println("Invalid Input.");
-                    break;
+                    System.out.println("Invalid Input. Try Again");
+                    cr.chooseARole(account);
+                    return;
             }
 
             prep.setInt(2, account.getUser_id());

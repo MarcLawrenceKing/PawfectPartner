@@ -24,7 +24,7 @@ public class RHPendingAdoptions {
             for (int i = 0; i < pets.size(); i++) {            
             System.out.println("[" + (i + 1) + "] " + pets.get(i).getPet_name());
             }
-
+                       
             backNum = pets.size() + 1; // Number to assign to back option [backNum] Back
             System.out.println("[" + (backNum) + "] Back");
             System.out.print("Enter your choice => ");
@@ -34,14 +34,16 @@ public class RHPendingAdoptions {
               return;
             }
             
-            if (choice > 0 && choice >= pets.size()) {
+            if (choice > 0 && choice <= pets.size()) {
               Pets petToView = new Pets();
               petToView = pets.get(choice - 1);
             
               app.rhPendingPetProfile(petToView, account);
-            }
+            } else {
+                    System.out.println("Invalid input. Try again.");
+                    rhPendingAdoption(pet, account);
+                } 
             
-            sc.close();
 
           } catch (Exception e) {
             System.out.println(e);

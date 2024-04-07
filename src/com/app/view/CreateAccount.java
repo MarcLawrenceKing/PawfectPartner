@@ -13,6 +13,7 @@ public class CreateAccount {
         UserController uc = new UserController();
         DisplayHomePage dh = new DisplayHomePage();
         try {
+            System.out.println("\n** Create Account **");
             System.out.print("Enter your first name: ");
             account.setFname(sc.nextLine());
             System.out.print("Enter your last name: ");
@@ -21,6 +22,13 @@ public class CreateAccount {
             account.setMobile(sc.nextLine());
             System.out.print("Enter preferred username: ");
             account.setUsername(sc.nextLine());
+            
+            while(account.getUsername().equals("admin")){
+                System.out.println("\'admin\' is not acceptable as an username.");
+                System.out.print("Enter preferred username: ");
+                account.setUsername(sc.nextLine());
+            }
+                    
             System.out.print("Enter preferred password: ");
             account.setPassword(sc.nextLine());
             System.out.println(" ");
@@ -29,9 +37,9 @@ public class CreateAccount {
             
             switch (Character.toLowerCase(yOrN)) {
                 case 'y': uc.createAccount(account); break;
-                case 'n': dh.displayHomePage(sc); break;
+                case 'n': dh.displayHomePage(); break;
                 default: 
-                    System.out.println("Invalid Input!!");
+                    System.out.println("Invalid Input. Try Again.");
                     createAccount();
                     break;
            }
