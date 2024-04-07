@@ -2,9 +2,9 @@
  * The DBConnection class establishes a database connection using JDBC.
  * it uses JDBC to interact with the MySQL database and provides a centralized 
  * location for managing database connections and operations throughout the system
-    
+ *  
  * @author Alessa Estaras, Cassidy Fernandez, Kapangyarihan Randy, Marc King, Jhanna Llovit
- 
+ *
  * @version 04/07/2024
  */
 package com.app.pawfect;
