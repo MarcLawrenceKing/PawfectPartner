@@ -29,14 +29,14 @@ public class UserController extends DBConnection implements UserRepository {
 
     /**
      * Scanner method named in to get the input from the user
-     * to be used all throughout the program
+     * to be used all throughout the program.
      */
     Scanner sc = new Scanner(System.in);
     DisplayHomePage dh = new DisplayHomePage();
 
     /**
-     * Creating a new user account in Database
-     * @param account The object who contain account informations
+     * Creating a new user account in Database.
+     * @param account The object who contain account informations.
      */
     @Override
     public void createAccount(Account account) {
@@ -65,7 +65,7 @@ public class UserController extends DBConnection implements UserRepository {
 
     /**
      * Accesses a user account that already exists.
-     * @param account The object who contain login stuff
+     * @param account The object who contain login stuff.
      */
     @Override
     public void logInAccount(Account account) {
@@ -100,7 +100,7 @@ public class UserController extends DBConnection implements UserRepository {
 
     /**
      * Accesses a user account that already exists.
-     * @param account The object who contain login stuff
+     * @param account The object who contain login stuff.
      */
     @Override
     public void updateAccount(Account account, int choice) {
