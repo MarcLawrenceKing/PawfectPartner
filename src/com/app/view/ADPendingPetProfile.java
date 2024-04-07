@@ -1,7 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * The ADPendingPetProfile class handles displaying pending pet profiles.
+ * This is where the system displays the profile of a pending pet and allows the user to cancel the adoption.
+ *
+ * This class is used to display pending pet profiles and pet status within the system
+ *
+ * @author Alessa Estaras, Cassidy Fernandez, Randy Kapangyarihan, Marc King, Jhanna Llovit
+ *  
+ * @version 04/08/2024 
  */
 package com.app.view;
 
@@ -12,6 +17,13 @@ import java.util.Scanner;
 
 
 public class ADPendingPetProfile {
+
+    /**
+     * Displays the profile of a pet pending adoption.
+     *
+     * @param petToView The pet for which the profile needs to be displayed.
+     * @param account The account of the user viewing the profile.
+     */
     public void adPendingPetProfile(Pets petToView, Account account){
         
         ADPendingAdoptions apa = new ADPendingAdoptions();
@@ -32,7 +44,7 @@ public class ADPendingPetProfile {
                 char yOrN = sc.next().charAt(0);
         
                 if (Character.toLowerCase(yOrN) == 'y') {
-                    ac.ADUpdateToFOR_ADOPTION(petToView);
+                    ac.ADUpdateToFOR_ADOPTION(petToView); // update pet status
                     ap.adoptAPet(account);
                 } 
                 
