@@ -4,8 +4,8 @@
  * It can also be seen here if the pet status is APPROVED or ARCHIVED. 
  * And the Owner can also update his pet's profile here.
  *
- * The RehomeController class implements the operations defined in the RehomeRepository
- * The RehomeController class extends to DBConnection to hold a database interconnection
+ * The RehomeController class implements the operations defined in the RehomeRepository.
+ * The RehomeController class extends to DBConnection to hold a database interconnection.
  *
  * @author Alessa Estaras, Cassidy Fernandez, Kapangyarihan Randy, Marc King, Jhanna Llovit
  *
@@ -31,14 +31,14 @@ public class RehomeController extends DBConnection implements RehomeRepository {
 
    /**
      * Scanner method named in to get the input from the user
-     * to be used all throughout the program
+     * to be used all throughout the program.
      */
     Scanner sc = new Scanner(System.in);
 
     /**
-     * Retrieves a listing of pets up for adopting for a particular owners
-     * @param pet A object to determine who owns it
-     * @return petList A objects that stand in for pets that are up for adoption
+     * Retrieves a listing of pets up for adopting for a particular owners.
+     * @param pet A object to determine who owns it.
+     * @return petList A objects that stand in for pets that are up for adoption.
      */
     @Override
     public ArrayList<Pets> rhPendingAdoptions(Pets pet) { //reads the database
@@ -76,7 +76,7 @@ public class RehomeController extends DBConnection implements RehomeRepository {
     }
 
     /**
-     * Updating a pet's database state to 'APPROVED'
+     * Updating a pet's database state to 'APPROVED'.
      * @param pet The object that status will be changed.
      */
     @Override
@@ -95,7 +95,7 @@ public class RehomeController extends DBConnection implements RehomeRepository {
     }
 
     /**
-     * Updating the pet's database status to 'NOT APPROVED'
+     * Updating the pet's database status to 'NOT APPROVED'.
      * @param pet The object that status will be changed.
      */
     @Override
@@ -114,7 +114,7 @@ public class RehomeController extends DBConnection implements RehomeRepository {
     }
 
     /**
-     * Updating the pet's database status to 'ARCHIVED'
+     * Updating the pet's database status to 'ARCHIVED'.
      * @param pet The object that status will be changed.
      */
     @Override
@@ -135,7 +135,7 @@ public class RehomeController extends DBConnection implements RehomeRepository {
 
 
     /**
-     * Update the pet database natural state profile 
+     * Update the pet database natural state profile. 
      * @param pet The object to be attach to the database.
      */
     @Override
