@@ -1,4 +1,12 @@
-
+/**
+ * The ADPetTypes class handles displaying available pet types for adoption.
+ * It provides functionality to display available pet types and manage pet adoptions.
+ * This class is used to manage pet types and adoptions within the system.
+ *
+ * @author Alessa Estaras, Cassidy Fernandez, Randy Kapangyarihan, Marc King, Jhanna Llovit
+ *  
+ * @version 04/06/2024
+ */
 package com.app.view;
 
 import com.app.controller.AdoptController;
@@ -9,6 +17,12 @@ import java.util.Scanner;
 
 
 public class ADPetTypes {
+
+    /**
+     * Displays available pet types for adoption and allows the user to view profiles and initiate adoptions.
+     *
+     * @param account The account of the user viewing available pet types.
+     */
     public void adPetTypes(Account account){
         AdoptAPet aa = new AdoptAPet();
         Scanner sc = new Scanner(System.in);
