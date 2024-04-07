@@ -1,4 +1,12 @@
-
+/**
+ * The ADPendingAdoptions class handles displaying pending adoption options.
+ * It provides functionality to display pending adoptions and allows users to interact with the system.
+ * This class is used to manage pending adoptions within the system.
+ *
+ * @author Alessa Estaras, Cassidy Fernandez, Randy Kapangyarihan, Marc King, Jhanna Llovit
+ *
+ * @version 04/08/2024 
+ */
 package com.app.view;
 
 import com.app.controller.AdoptController;
@@ -10,14 +18,21 @@ import java.util.Scanner;
 
 
 public class ADPendingAdoptions {
+
+    /**
+     * Displays pending adoption options for a specific pet.
+     *
+     * @param pet The pet for which pending adoptions need to be displayed.
+     * @param account The account of the user viewing pending adoptions.
+     */
     public void adPendingAdoption(Pets pet, Account account){
                 
         AdoptAPet ap = new AdoptAPet();
-        ADPendingPetProfile app = new ADPendingPetProfile();
+        ADPendingPetProfile app = new ADPendingPetProfile(); // instantiate
         Scanner sc = new Scanner(System.in);
-        AdoptController ac = new AdoptController();
-        ArrayList<Pets> pets = new ArrayList<>() ;
-        pets = ac.adPendingAdoptions(pet);
+        AdoptController ac = new AdoptController(); // instantiate
+        ArrayList<Pets> pets = new ArrayList<>() ; // initialize
+        pets = ac.adPendingAdoptions(pet); // retrieve
         int backNum;
         int choice;
             do {
@@ -37,7 +52,7 @@ public class ADPendingAdoptions {
                 ap.adoptAPet(account);
     }
                 if (choice > 0 && choice <= pets.size()) {
-                    Pets petToView = new Pets();
+                    Pets petToView = new Pets(); // get the selected pet
                     petToView = pets.get(choice - 1);
                     
                     app.adPendingPetProfile(petToView, account);
