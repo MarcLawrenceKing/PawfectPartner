@@ -2,11 +2,11 @@
  * The AdoptController class handles operations related to pet adoption, including retrieving pending adoptions, 
  * fetching pets of specific types, updating pet statuses, establishing
  * a connection to the database, preparing the SQL statements, and executing queries.
- 
+ *
  * @author Alessa Estaras, Cassidy Fernandez, Kapangyarihan Randy, Marc King, Jhanna Llovit
  *
  * @version 04/07/2024
-*/
+ */
 package com.app.controller;
 
 import com.app.repository.AdoptRepository;
@@ -25,7 +25,7 @@ public class AdoptController extends DBConnection implements AdoptRepository {
 
     /**
     * This method retrieves a list of pets pending adoption for a specific adopter.
-    
+    *
     * @param pet The pet for which pending adoptions need to be retrieved. 
     * @return An ArrayList of Pets objects representing pending adoptions.
     */
@@ -61,7 +61,7 @@ public class AdoptController extends DBConnection implements AdoptRepository {
     
     /**
      * This method retrieves a list of pets based on the specified pet type and user ID.
-     
+     *
      * @param account The account of the user requesting the pet types.
      * @param choice The choice representing the pet type (1 for DOG, 2 for CAT, etc.).
      * @return An ArrayList of Pets objects representing the requested pet types.
@@ -119,7 +119,7 @@ public class AdoptController extends DBConnection implements AdoptRepository {
     /**
      * Updates the status of a pet to "FOR ADOPTION" for pending adoptions.
      * It also sets the pet ID parameter and has an exception-handling
-     
+     *
      * @param pet The pet for which the status needs to be updated.
      */
     @Override
