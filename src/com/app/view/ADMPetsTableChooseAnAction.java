@@ -1,12 +1,12 @@
 /**
  * The ADMPetsTableChoose class provides selection for actions to be executed.
- * It allows users to select wheter to retrieve, delete or go back to the main table 
+ * It allows users to select whether to retrieve, delete or go back to the main table 
  *
  * This class impart methods to showing the options menu, take user input and execute chosen selection
  *
  * @author Alessa Estaras, Cassidy Fernandez, Kapangyarihan Randy, Marc King, Jhanna Llovit
  *
- * @version 04/08/2023
+ * @version 04/08/2024
  */
 package com.app.view;
 
