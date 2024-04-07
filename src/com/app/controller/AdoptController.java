@@ -1,3 +1,12 @@
+/**
+ * The AdoptController class handles operations related to pet adoption, including retrieving pending adoptions, 
+ * fetching pets of specific types, updating pet statuses, establishing
+ * a connection to the database, preparing the SQL statements, and executing queries.
+ 
+ * @author Alessa Estaras, Cassidy Fernandez, Kapangyarihan Randy, Marc King, Jhanna Llovit
+ *
+ * @version 04/07/2024
+*/
 package com.app.controller;
 
 import com.app.repository.AdoptRepository;
@@ -14,6 +23,12 @@ import java.util.Scanner;
 public class AdoptController extends DBConnection implements AdoptRepository {
     Scanner sc = new Scanner(System.in);
 
+    /**
+    * This method retrieves a list of pets pending adoption for a specific adopter.
+    
+    * @param pet The pet for which pending adoptions need to be retrieved. 
+    * @return An ArrayList of Pets objects representing pending adoptions.
+    */
     @Override
     public ArrayList<Pets> adPendingAdoptions(Pets pet) { //reads the database
       
@@ -43,7 +58,14 @@ public class AdoptController extends DBConnection implements AdoptRepository {
         }
         return petList;        
     }
-
+    
+    /**
+     * This method retrieves a list of pets based on the specified pet type and user ID.
+     
+     * @param account The account of the user requesting the pet types.
+     * @param choice The choice representing the pet type (1 for DOG, 2 for CAT, etc.).
+     * @return An ArrayList of Pets objects representing the requested pet types.
+     */
     @Override
     public ArrayList<Pets> adPetTypes(Account account, int choice) {
         
@@ -86,17 +108,22 @@ public class AdoptController extends DBConnection implements AdoptRepository {
                     pets.setAdopter_id(result.getInt("adopter_id"));
                     pets.setOwner_id(result.getInt("owner_id"));
 
-                    petList.add(pets);
+                    petList.add(pets); // adding the pet object to the list
                 }                                                
             } catch (Exception e) {
-                System.err.println(e);
+                System.err.println(e); // exception handling
             }       
             return petList;
     }
 
+    /**
+     * Updates the status of a pet to "FOR ADOPTION" for pending adoptions.
+     * It also sets the pet ID parameter and has an exception-handling
+     
+     * @param pet The pet for which the status needs to be updated.
+     */
     @Override
     public void ADUpdateToFOR_ADOPTION(Pets pet) {// for pending adoption
-         // to be updated...
 
         try {
             connect();
@@ -110,9 +137,15 @@ public class AdoptController extends DBConnection implements AdoptRepository {
             System.err.println(e);
         }
     }
-
+    
+    /**
+     * Updates the status of a pet to "PENDING" for new adoptions.
+     *
+     * @param pet The pet for which the status needs to be updated.
+     * @param account The account of the user requesting the adoption.
+     */
     @Override
-    public void ADUpdateToPENDING(Pets pet, Account account) { //for new adoption
+    public void ADUpdateToPENDING(Pets pet, Account account) { 
         
         try {
             connect();
@@ -121,7 +154,7 @@ public class AdoptController extends DBConnection implements AdoptRepository {
             prep.setString(2, "PENDING");           
             prep.setInt(3, pet.getPet_id());
             prep.executeUpdate();
-            System.out.println("Pet status updated successfully!");
+            System.out.println("Pet status updated successfully!"); // displaying a message once its successful
 
         } catch (Exception e) {
             System.err.println(e);
