@@ -1,3 +1,13 @@
+/**
+ * The ADMArchivedPets class is responsible for showing archived pet details.
+ * It dispense archived pet data from the database thru the AdminController class.
+ * 
+ * This class impart methods to access and adapt account attributes.
+ *
+ * @author Alessa Estaras, Cassidy Fernandez, Kapangyarihan Randy, Marc King, Jhanna Llovit
+ *
+ * @version 04/08/2023
+ */
 package com.app.view;
 
 import java.util.ArrayList;
@@ -5,6 +15,8 @@ import com.app.controller.AdminController;
 import com.app.model.Pets;
 
 public class ADMArchivedPetsTable {
+
+    // Showing the archived pets table
     private void displayPet(Pets pet) {
         System.out.printf("%-16d%-17s%-13d%-22s%-19s%-18s%-18d%-8d%n",
                             pet.getPet_id(), pet.getPet_name(), pet.getPet_age(), 
@@ -36,8 +48,8 @@ public class ADMArchivedPetsTable {
             }
 
             // After displaying pets, provide options for user action
-            //ADMPetsTableChooseAnAction adtca = new ADMPetsTableChooseAnAction();
-            //adtca.admPetsTableChooseAnAction();
+            // ADMPetsTableChooseAnAction adtca = new ADMPetsTableChooseAnAction();
+            // adtca.admPetsTableChooseAnAction();
 
         } catch (Exception e) {
             // Handle exceptions gracefully
