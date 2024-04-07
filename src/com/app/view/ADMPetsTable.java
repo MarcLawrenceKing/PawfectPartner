@@ -1,3 +1,13 @@
+/**
+ * The ADMPetsTable class is responsible for showing the list of pets/
+ * It dispense the list of pets from the controller and formats and prints them in table.
+ *
+ * This class impart methods to sho the pet table with headers and pet details.
+ *
+ * @author Alessa Estaras, Cassidy Fernandez, Kapangyarihan Randy, Marc King, Jhanna Llovit
+ *
+ * @version 04/08/2023
+ */
 package com.app.view;
 
 import java.util.ArrayList;
@@ -5,6 +15,8 @@ import com.app.controller.AdminController;
 import com.app.model.Pets;
 
 public class ADMPetsTable {
+
+    // Showing the pet table with headers and pet details.
     public void admPetsTable() {
         try {
             // Retrieve pet list from controller
