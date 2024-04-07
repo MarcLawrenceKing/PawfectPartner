@@ -1,3 +1,15 @@
+/**
+ * The AdminController class is where it can holds admin functionalities.
+ * It implements the AdminRepository interface and contains methods for logging as admin.
+ * 
+ * This class interconnects with the database thru SQL Queries defined in the QueryConstant class and     
+ * ADMChooseTable to display options for the admin.
+ *
+ * @author Alessa Estaras, Cassidy Fernandez, Kapangyarihan Randy, Marc King, Jhanna Llovit
+ *
+ * @version 04/07/2023
+ */
+
 package com.app.controller;
 
 import static com.app.model.QueryConstant.ADM_DELETE_PETS;
@@ -16,6 +28,11 @@ import com.app.repository.AdminRepository;
 import com.app.view.ADMChooseATable;
 
 public class AdminController extends DBConnection implements AdminRepository {
+
+    /**
+     * Logs in as an admin choices to choose a table for admin functions.
+     * @param account The object representing the admin account.
+     */
     @Override
     public void logInAccountAdmin (Account account) {
         ADMChooseATable ct = new ADMChooseATable();
@@ -45,6 +62,10 @@ public class AdminController extends DBConnection implements AdminRepository {
         }
     }
 
+    /**
+     * Retrieves a list of users from the databsase.
+     * @return accountList The object represents the users.
+     */
     @Override
     public ArrayList<Account> admUsersTable () {
         ArrayList<Account> accountList = new ArrayList<>();
@@ -75,6 +96,10 @@ public class AdminController extends DBConnection implements AdminRepository {
         
     }
 
+    /**
+     * Retrieves a list of pets from the database
+     * @return an petList The object represents the pets.
+     */
     @Override
     public ArrayList<Pets> admPetsTable () {
         ArrayList<Pets> petList = new ArrayList<>();
@@ -107,7 +132,11 @@ public class AdminController extends DBConnection implements AdminRepository {
         return petList;
         
     }
-    
+
+    /**
+     * Retrieves a list of archived pets from the database.
+     * @return petList The object represents the archived pets.
+     */
     @Override
     public ArrayList<Pets> admArchivedPetsTable () {
         ArrayList<Pets> petList = new ArrayList<>();
@@ -140,7 +169,11 @@ public class AdminController extends DBConnection implements AdminRepository {
         return petList;
         
     }
-    
+
+    /**
+     * Deletes a pet record from the database based on the given options.
+     * @param choice The object ID of the pet to be deleted.
+     */
     @Override
     public void admDeletePets(int choice) {    
         try {
@@ -159,7 +192,11 @@ public class AdminController extends DBConnection implements AdminRepository {
             System.out.println(e);
         }
     }
-    
+
+    /**
+     * Retrieves an archived pet record from the database based on the given choice
+     * @param choice The object ID of the pet whose be retrieved from archived records.
+     */
     @Override
     public void admRetrievePetsArchived (int choice) {
       
