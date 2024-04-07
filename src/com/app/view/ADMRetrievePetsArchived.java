@@ -1,10 +1,21 @@
-
+/**
+ * The ADMRetrievePetsArchived class handles retrieving archived pets.
+ * Admin can retrieve the archived pets and update the table.
+ *
+ * @author Alessa Estaras, Cassidy Fernandez, Randy Kapangyarihan, Marc King, Jhanna Llovit
+ *
+ * @version 04/06/2024
+ */
 package com.app.view;
 
 import com.app.controller.AdminController;
 import java.util.Scanner;
 
 public class ADMRetrievePetsArchived {
+
+    /**
+     * Allows an admin to retrieve archived pets.
+     */
     public void admRetrievePetsArchived(){
         
         ADMChooseATable adct = new ADMChooseATable();
