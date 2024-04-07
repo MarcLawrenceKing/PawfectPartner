@@ -1,8 +1,8 @@
 /**
  * The Main class contains the entry point for the application.
-
+ *
  * @author Alessa Estaras, Cassidy Fernandez, Randy Kapangyarihan, Marc King, Jhanna Llovit
-
+ *
  * @version 04/07/2024
  */
 package com.app.pawfect;
