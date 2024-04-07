@@ -1,9 +1,20 @@
+/**
+ * The ADMChooseTable provides operations to decide a table for administration
+ * It dispense options for choosing between users, pets, or logging out.
+ *
+ * This class impart methods to prompt the user to choose a table
+ *
+ * @author Alessa Estaras, Cassidy Fernandez, Kapangyarihan Randy, Marc King, Jhanna Llovit
+ *
+ * @version 04/08/2023
+ */
 package com.app.view;
 
 import java.util.Scanner;
 
-
 public class ADMChooseATable {
+
+    // Prompts the user to select a table and redirects to the corresponding views
     public void chooseATable() {
         ADMPetsTableChooseAnAction admca = new ADMPetsTableChooseAnAction();
         Scanner sc = new Scanner(System.in);
