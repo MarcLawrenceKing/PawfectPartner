@@ -1,5 +1,17 @@
+/**
+ * The UserController is where you can see how users create an Account.
+ * how to Log-in and how to Update their accounts if they are an Adopter or Pet Owner.
+ *
+ * The UserController implements the operations defined in UserRepository.
+ * The UserController class extends to DBConnection to hold a database interconnection.
+ *
+ * @author Alessa Estaras, Cassidy Fernandez, Kapangyarihan Randy, Marc King, Jhanna Llovit
+ *
+ * @version 04/07/2023
+ */
 package com.app.controller;
 
+//Importing necessary classes and packages.
 import java.util.Scanner;
 
 import com.app.repository.UserRepository;
@@ -14,15 +26,24 @@ import com.app.view.DisplayHomePage;
 import com.app.view.RehomeAPet;
 
 public class UserController extends DBConnection implements UserRepository {
+
+    /**
+     * Scanner method named in to get the input from the user
+     * to be used all throughout the program
+     */
     Scanner sc = new Scanner(System.in);
     DisplayHomePage dh = new DisplayHomePage();
 
+    /**
+     * Creating a new user account in Database
+     * @param account The object who contain account informations
+     */
     @Override
     public void createAccount(Account account) {
         try {
             connect();
             prep = con.prepareStatement(CREATE_ACCOUNT);
-            prep.setString(1, account.getUsername()); // palitan ng getter
+            prep.setString(1, account.getUsername());
             prep.setString(2, account.getPassword());
             prep.setString(3, account.getfName());
             prep.setString(4, account.getlName());
@@ -42,6 +63,10 @@ public class UserController extends DBConnection implements UserRepository {
         }
     }
 
+    /**
+     * Accesses a user account that already exists.
+     * @param account The object who contain login stuff
+     */
     @Override
     public void logInAccount(Account account) {
         DisplayHomePage dhp = new DisplayHomePage();
@@ -73,6 +98,10 @@ public class UserController extends DBConnection implements UserRepository {
         }
     }
 
+    /**
+     * Accesses a user account that already exists.
+     * @param account The object who contain login stuff
+     */
     @Override
     public void updateAccount(Account account, int choice) {
         AdoptAPet ap = new AdoptAPet();
