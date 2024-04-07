@@ -12,7 +12,8 @@
 package com.app.model;
 
 public interface QueryConstant {
-    
+
+    // database connection parameters
     final static String URL = "jdbc:mysql://localhost:3306/db_pawfect";
     final static String USERNAME = "root";
     final static String PASSWORD = "";
