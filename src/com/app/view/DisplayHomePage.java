@@ -1,10 +1,21 @@
-
+/**
+ * The DisplayHomePage class handles displaying the home page of the application.
+ * On this page, you can see the create account or login account option for users
+ *
+ * @author Alessa Estaras, Cassidy Fernandez, Randy Kapangyarihan, Marc King, Jhanna Llovit
+ *
+ * @version 04/08/2024
+ */
 package com.app.view;
 
 import java.util.Scanner;
 
 
 public class DisplayHomePage {
+
+    /**
+     * Displays the home page and prompts the user for action.
+     */
     public void displayHomePage () {
         Scanner sc = new Scanner(System.in);
         CreateAccount ca = new CreateAccount();
