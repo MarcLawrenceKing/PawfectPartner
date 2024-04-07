@@ -7,7 +7,7 @@
  * It interconnect with RehomeController class to redeem the list of pets available.
  *
  * @author Alessa Estaras, Cassidy Fernandez, Kapangyarihan Randy, Marc King, Jhanna Llovit
- *
+ * 
  * @version 04/08/2023
  */
 package com.app.view;
