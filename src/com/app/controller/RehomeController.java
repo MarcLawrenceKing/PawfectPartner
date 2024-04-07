@@ -1,6 +1,20 @@
+/**
+ * The RehomeController is where it can be seen if a Pet Owner will adopt his pets, 
+ * because the Profiles of the specific pet he will adopt are placed here. 
+ * It can also be seen here if the pet status is APPROVED or ARCHIVED. 
+ * And the Owner can also update his pet's profile here.
+ *
+ * The RehomeController class implements the operations defined in the RehomeRepository
+ * The RehomeController class extends to DBConnection to hold a database interconnection
+ *
+ * @author Alessa Estaras, Cassidy Fernandez, Kapangyarihan Randy, Marc King, Jhanna Llovit
+ *
+ * @version 04/06/2023
+ */
+
 package com.app.controller;
 
-
+//Importing necessary classes and packages.
 import com.app.model.Pets;
 import static com.app.model.QueryConstant.RH_CREATE_PET_PROFILE;
 import static com.app.model.QueryConstant.RH_PENDING_ADOPTIONS;
@@ -14,8 +28,18 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class RehomeController extends DBConnection implements RehomeRepository {
+
+   /**
+     * Scanner method named in to get the input from the user
+     * to be used all throughout the program
+     */
     Scanner sc = new Scanner(System.in);
-    
+
+    /**
+     * Retrieves a listing of pets up for adopting for a particular owners
+     * @param pet A object to determine who owns it
+     * @return petList A objects that stand in for pets that are up for adoption
+     */
     @Override
     public ArrayList<Pets> rhPendingAdoptions(Pets pet) { //reads the database
       
@@ -28,6 +52,11 @@ public class RehomeController extends DBConnection implements RehomeRepository {
             result = prep.executeQuery();
             System.out.println();
             while (result.next()) {
+
+                /**
+                 * NOTE: In order to guarantee different situations for every row fetched, 
+                 * an additional Pets object needs to be produced within the loop.
+                 */
                 Pets newPet = new Pets();
                 newPet.setPet_id(result.getInt("pet_id"));
                 newPet.setPet_name(result.getString("pet_name"));
@@ -46,6 +75,10 @@ public class RehomeController extends DBConnection implements RehomeRepository {
         return petList;        
     }
 
+    /**
+     * Updating a pet's database state to 'APPROVED'
+     * @param pet The object that status will be changed.
+     */
     @Override
     public void RHUpdateToAPPROVED(Pets pet){
         try {
@@ -60,7 +93,11 @@ public class RehomeController extends DBConnection implements RehomeRepository {
             System.err.println(e);
         }
     }
-    
+
+    /**
+     * Updating the pet's database status to 'NOT APPROVED'
+     * @param pet The object that status will be changed.
+     */
     @Override
     public void RHUpdateToNOTAPPROVED(Pets pet){
         try {
@@ -75,7 +112,11 @@ public class RehomeController extends DBConnection implements RehomeRepository {
             System.err.println(e);
         }
     }
-    
+
+    /**
+     * Updating the pet's database status to 'ARCHIVED'
+     * @param pet The object that status will be changed.
+     */
     @Override
     public void RHUpdateToARCHIVED(Pets pet) {
 
@@ -92,7 +133,11 @@ public class RehomeController extends DBConnection implements RehomeRepository {
         }
     }
 
-// Create
+
+    /**
+     * Update the pet database natural state profile 
+     * @param pet The object to be attach to the database.
+     */
     @Override
     public void rhPetProfiles(Pets pet) {    
         try {
