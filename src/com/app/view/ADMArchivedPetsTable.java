@@ -2,7 +2,7 @@
  * The ADMArchivedPets class is responsible for showing archived pet details.
  * It dispense archived pet data from the database thru the AdminController class.
  * 
- * This class impart methods to access and adapt account attributes.
+ * This class impart methods to show the archived pets table.
  *
  * @author Alessa Estaras, Cassidy Fernandez, Kapangyarihan Randy, Marc King, Jhanna Llovit
  *
