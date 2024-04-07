@@ -8,7 +8,7 @@
  *
  * @author Alessa Estaras, Cassidy Fernandez, Kapangyarihan Randy, Marc King, Jhanna Llovit
  *
- * @version 04/06/2023
+ * @version 04/06/2024
  */
 package com.app.model;
 
