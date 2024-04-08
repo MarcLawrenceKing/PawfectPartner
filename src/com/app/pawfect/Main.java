@@ -1,15 +1,22 @@
-
+/**
+ * The Main class contains the entry point for the application.
+ *
+ * @author Alessa Estaras, Cassidy Fernandez, Randy Kapangyarihan, Marc King, Jhanna Llovit
+ *
+ * @version 04/08/2024
+ */
 package com.app.pawfect;
 
 import com.app.view.DisplayHomePage;
-import java.util.Scanner;
 
+/**
+ * Main method to start the system. Calling and displaying the DisplayHomePage.
+*/
 public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);       
-        DisplayHomePage dh = new DisplayHomePage();
+    public static void main(String[] args) {    
+        DisplayHomePage dh = new DisplayHomePage(); 
         
-        dh.displayHomePage(sc);
-        
+        dh.displayHomePage();
+
     }
 }

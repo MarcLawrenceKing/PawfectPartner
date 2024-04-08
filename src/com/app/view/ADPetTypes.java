@@ -1,4 +1,12 @@
-
+/**
+ * The ADPetTypes class handles displaying available pet types for adoption.
+ * It provides functionality to display available pet types and manage pet adoptions.
+ * This class is used to manage pet types and adoptions within the system.
+ *
+ * @author Alessa Estaras, Cassidy Fernandez, Randy Kapangyarihan, Marc King, Jhanna Llovit
+ *  
+ * @version 04/07/2024
+ */
 package com.app.view;
 
 import com.app.controller.AdoptController;
@@ -9,7 +17,14 @@ import java.util.Scanner;
 
 
 public class ADPetTypes {
+
+    /**
+     * Displays available pet types for adoption and allows the user to view profiles and initiate adoptions.
+     *
+     * @param account The account of the user viewing available pet types.
+     */
     public void adPetTypes(Account account){
+        AdoptAPet aa = new AdoptAPet();
         Scanner sc = new Scanner(System.in);
         AdoptController ac = new AdoptController();
         ArrayList<Pets> pets = new ArrayList<>() ;
@@ -24,10 +39,11 @@ public class ADPetTypes {
                 choice = sc.nextInt();
 
                 if (choice == 6) {
-                    return;
+                    aa.adoptAPet(account);
                 }
                 
                 if (choice > 0 && choice < 6) {
+                    System.out.println("\n** Pet Profiles **");
                     pets = ac.adPetTypes(account, choice);
                     int backNum = pets.size() + 1;
                     System.out.println("[" + backNum + "] Back");
@@ -43,7 +59,8 @@ public class ADPetTypes {
                     if (choice1 > 0 && choice1 <= pets.size()) {
 
                         petToView = pets.get(choice1 - 1);
-
+                        
+                        System.out.println("\n** Pet Profile **");
                         System.out.println("Name: " + petToView.getPet_name());
                         System.out.println("Age: " + petToView.getPet_age());
                         System.out.println("Pet breed: " + petToView.getPet_breed());
@@ -55,8 +72,12 @@ public class ADPetTypes {
                     char yOrN = sc.next().charAt(0);
 
                     if (Character.toLowerCase(yOrN) == 'y') {
-                        ac.ADUpdateToPENDING(petToView, account); //for new adoption
-                    
+                        ac.ADUpdateToPENDING(petToView, account); //for new adoption                    
+                    } else if (Character.toLowerCase(yOrN) == 'n'){
+                        adPetTypes(account);
+                    } else {
+                        System.out.println("Invalid Input.");
+                        adPetTypes(account);
                     }
                 }
             
@@ -64,7 +85,7 @@ public class ADPetTypes {
                 System.err.println(e);
             }
             
-            sc.close();
+            
         } while (true);
 
     }

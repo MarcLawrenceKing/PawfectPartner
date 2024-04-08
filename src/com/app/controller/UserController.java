@@ -1,5 +1,17 @@
+/**
+ * The UserController is where you can see how users create an Account.
+ * how to Log-in and how to Update their accounts if they are an Adopter or Pet Owner.
+ *
+ * The UserController implements the operations defined in UserRepository.
+ * The UserController class extends to DBConnection to hold a database interconnection.
+ *
+ * @author Alessa Estaras, Cassidy Fernandez, Kapangyarihan Randy, Marc King, Jhanna Llovit
+ *
+ * @version 04/07/2024
+ */
 package com.app.controller;
 
+//Importing necessary classes and packages.
 import java.util.Scanner;
 
 import com.app.repository.UserRepository;
@@ -14,15 +26,24 @@ import com.app.view.DisplayHomePage;
 import com.app.view.RehomeAPet;
 
 public class UserController extends DBConnection implements UserRepository {
+
+    /**
+     * Scanner method named in to get the input from the user
+     * to be used all throughout the program.
+     */
     Scanner sc = new Scanner(System.in);
     DisplayHomePage dh = new DisplayHomePage();
 
+    /**
+     * Creating a new user account in Database.
+     * @param account The object who contain account informations.
+     */
     @Override
     public void createAccount(Account account) {
         try {
             connect();
             prep = con.prepareStatement(CREATE_ACCOUNT);
-            prep.setString(1, account.getUsername()); // palitan ng getter
+            prep.setString(1, account.getUsername());
             prep.setString(2, account.getPassword());
             prep.setString(3, account.getfName());
             prep.setString(4, account.getlName());
@@ -33,18 +54,22 @@ public class UserController extends DBConnection implements UserRepository {
                 System.out.println("Fields cannot be empty.");
             } else {
                 prep.executeUpdate();
-                System.out.println("Account Created Successfully!");
-                System.out.println("");
+                System.out.println("\nAccount Created Successfully!");
             }
             con.close();
-            dh.displayHomePage(sc);
+            dh.displayHomePage();
         } catch (Exception e) {
             System.err.println(e);
         }
     }
 
+    /**
+     * Accesses a user account that already exists.
+     * @param account The object who contain login stuff.
+     */
     @Override
     public void logInAccount(Account account) {
+        DisplayHomePage dhp = new DisplayHomePage();
         ChooseARole cr = new ChooseARole();
         try {
             connect();
@@ -62,20 +87,27 @@ public class UserController extends DBConnection implements UserRepository {
                 account.setPassword(result.getString("users_password"));
                 System.out.println("");
                 System.out.println("Logged in successfully!");
-                System.out.println("");
                 cr.chooseARole(account);
             } else {
+                System.out.println("");
                 System.out.println("Logged in failed.");
+                dhp.displayHomePage();
             }
         } catch (Exception e) {
             System.err.println(e);
         }
     }
 
+    /**
+     * Accesses a user account that already exists.
+     * @param account The object who contain login stuff.
+     */
     @Override
     public void updateAccount(Account account, int choice) {
         AdoptAPet ap = new AdoptAPet();
         RehomeAPet rp = new RehomeAPet();
+        DisplayHomePage dhp = new DisplayHomePage();
+        ChooseARole cr = new ChooseARole();
 
         try {
             connect();
@@ -89,11 +121,13 @@ public class UserController extends DBConnection implements UserRepository {
                 case 2:
                     prep.setString(1, "PET OWNER");
                     rp.rehomeAPet(account);
-
-                    break;
+                case 3: 
+                    System.out.println("\nLogged Out Successfuly!");
+                    dhp.displayHomePage();
                 default:
-                    System.out.println("Invalid Input.");
-                    break;
+                    System.out.println("Invalid Input. Try Again");
+                    cr.chooseARole(account);
+                    return;
             }
 
             prep.setInt(2, account.getUser_id());

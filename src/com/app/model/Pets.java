@@ -1,7 +1,19 @@
+/**
+ * The Pets class is represents a pet management in the system.
+ * It stores the pets information that will be use on the system.
+ *
+ * This class is used to model pets inside the system and 
+ * used by various components including view, controllers and repository 
+ * to perform function to related pet management.
+ *
+ * @author Alessa Estaras, Cassidy Fernandez, Kapangyarihan Randy, Marc King, Jhanna Llovit
+ *
+ * @version 04/06/2024
+ */
 package com.app.model;
 
-public class Pets {// wagpansininito
-    // instance variable
+public class Pets {
+    // Instance Variable
     private int pet_id;
     private String pet_type;
     private String pet_name;
@@ -12,11 +24,24 @@ public class Pets {// wagpansininito
     private int adopter_id;
     private int owner_id;
 
-    public Pets() { // default constructor
+    //Creating a new Pets object with default values.
+    public Pets() { 
 
     }
 
-    // initialized constructor
+    /**
+     * Creating a new Pets object with the define attributes.
+     *
+     * @param pet_id for Pets ID
+     * @param pet_type for Type of pet
+     * @param pet_name for Name of pet
+     * @param pet_age for Age of pet
+     * @param pet_breed for Breed of pet
+     * @param pet_prevState for Pet State
+     * @param pet_status for Status of Pet
+     * @param adopter_id for Adopter ID
+     * @param owner_id for Pet Owner ID
+     */
     public Pets(int pet_id, String pet_type, String pet_name, int pet_age, String pet_breed, String pet_prevState,
             String pet_status, int adopter_id, int owner_id) {
         this.pet_id = pet_id;
@@ -30,7 +55,7 @@ public class Pets {// wagpansininito
         this.owner_id = owner_id;
     }
 
-    // setters and getters
+    // Setters and Getters
 
     public int getPet_id() {
         return pet_id;

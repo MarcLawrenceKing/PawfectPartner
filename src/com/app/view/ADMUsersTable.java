@@ -1,28 +1,47 @@
+/**
+ * The ADMUsersTable class handles displaying the user accounts table.
+ * This class is responsible for displaying the complete details of the users
+ * 
+ * @author Alessa Estaras, Cassidy Fernandez, Randy Kapangyarihan, Marc King, Jhanna Llovit
+ *
+ * @version 04/08/2024
+ */
 package com.app.view;
 
 import java.util.ArrayList;
-
 import com.app.controller.AdminController;
 import com.app.model.Account;
 
 public class ADMUsersTable {
-    public void admUsersTable (Account account) {
-        ArrayList<Account> accountList = new ArrayList<>();
-        AdminController adc = new AdminController();
-        accountList = adc.ADMUsersTable();
 
-        //Display
-        System.out.println("User ID\t\tUsername\t\tFirstName\t\tLast Name\t\t Mobile Number\t\tUser Type");
-        System.out.println("===============================================================================");
+    /**
+     * Displays the user accounts table.
+     */
+    public void admUsersTable() {
+        try {
+            // Retrieve account list from controller
+            AdminController adc = new AdminController();
+            ArrayList<Account> accountList = adc.admUsersTable();
 
-        for (int i = 0; i < accountList.size(); i++) {
-            System.out.print(accountList.get(i).getUser_id());
-            System.out.print("\t\t" + accountList.get(i).getUsername());
-            System.out.print("\t\t" + accountList.get(i).getfName());
-            System.out.print("\t\t" + accountList.get(i).getlName());
-            System.out.print("\t\t" + accountList.get(i).getMobile());
-            System.out.print("\t\t" + accountList.get(i).getType());
-            System.out.println("\n----------------------------------------------------------------------------");
+            // Display table headers
+            System.out.println("\nUser ID\t\tUsername\t\tFirstName\t\tLastName\t\tMobile Number");
+            System.out.println("=====================================================================================================");
+
+            // Display account information
+            for (Account account : accountList) {
+                System.out.printf("%-16d%-25s%-25s%-22s%-16s\n" ,
+                                    account.getUser_id(), account.getUsername(), account.getfName(),
+                                    account.getlName(), account.getMobile());
+                System.out.println("-----------------------------------------------------------------------------------------------------");
+            }
+            
+            // Prompt the user to choose a table
+            ADMChooseATable act = new ADMChooseATable();
+            act.chooseATable();
+            
+        } catch (Exception e) {
+            // Handle exceptions gracefully
+            System.err.println("Error displaying account information: " + e.getMessage());
         }
     }
 }
